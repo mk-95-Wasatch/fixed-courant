@@ -16,8 +16,8 @@ do
     ./extractSolverScalingData *.out
     ./extractScalingData *.out
 
-    solverDataPaths+=("${case}/scalingData")
-    scalingDataPaths+=("${case}/solverScalingData")
+    solverDataPaths+=("${case}/solverScalingData")
+    scalingDataPaths+=("${case}/scalingData")
     # taskGraphDataPaths+=("${case}/TaskGraphData")
     aveComponentTimesPaths+=("${case}/aveComponentTimes")
 done
