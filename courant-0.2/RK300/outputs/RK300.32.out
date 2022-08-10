@@ -1,0 +1,1612 @@
+Parallel: 32 MPI processes (using MPI)
+Parallel: MPI Level Required: 0, provided: 0
+Date:       Tue Aug  9 13:24:47 2022
+Machine:    notch009
+git branch:wasatch-low-cost-integ-cmake
+git date:   Sat Jul 30 10:34:22 2022 -0600
+git hash:   9315f9f96fa6304db4fe79378b145f37ea40016d
+Assertion level: 0
+CFLAGS:          
+CXXFLAGS:        
+______________________________________________________________________
+Application Component: 	'wasatch'
+
+-------------------------------------------------------------
+Wasatch was built against:
+  SpatialOps HASH: bd7a2bac76e42e2cb528b02e2cf1291d05c71926
+             DATE: Fri Nov 12 11:34:54 2021 -0700
+     ExprLib HASH: d2950c77edb22e5f3669ddaaf2d2ed29ceb24d2c
+             DATE: Thu Aug 5 12:26:26 2021 -0600
+    TabProps HASH: eca0dc5f26b20d4f6b1cebe51b1ae97e11871e83
+             DATE: Wed Aug 11 20:11:26 2021 -0600
+-------------------------------------------------------------
+
+Linear Solver: 		hypre
+Load Balancer: 		Simple
+Scheduler: 		MPI
+Patch layout: 		(4,4,2)
+Grid statistics:
+Number of levels:		1
+Level 0:
+  Number of patches:		32
+  Total number of cells:	1115400 (34856.2 avg. per patch)
+Total patches in grid:		32
+Total cells in grid:		1115400 (34856.2 avg. per patch)
+
+Using small, individual MPI messages (no message combining)
+Detected solver: hypre
+------------------------------------------------
+Creating momentum equations...
+Setting up X momentum transport equation
+Setting up Y momentum transport equation
+Setting up Z momentum transport equation
+Setting initial conditions for momentum equation: x-mom
+Setting initial conditions for momentum equation: y-mom
+Setting initial conditions for momentum equation: z-mom
+Setting initial conditions for pressure: pressure
+------------------------------------------------
+
+Compiling initialization taskgraph.
+------------------------------------------------
+SETTING INITIAL BOUNDARY CONDITIONS:
+------------------------------------------------
+Setting Initial BCs for transport equation 'x-mom'
+Setting Initial BCs for transport equation 'y-mom'
+Setting Initial BCs for transport equation 'z-mom'
+------------------------------------------------
+Wasatch: done creating initialization task(s)
+Scheduling Task 'compute timestep' COMPUTES 'delT' in NEW data warehouse
+Wasatch: done creating timestep task(s)
+Done with taskgraph compile (0.000147214 seconds)
+Warning: addContribution not implemented for LoadBalancerCommon.
+WARNING at time step 0 and sim time 0 : lowering the next delT from 1e+13 to the maximum: 1
+WARNING at time step 0 and sim time 0 : for the initial time up to 0 lowering the next delT from 1 to the maximum: 0.0001
+
+Simulation and run time stats are reported at the end of each time step
+EMA == Wall time as an exponential moving average using a window of the last 10 time steps
+Timestep 0       Time=0           Next delT=0.0001      Wall Time=0.111222  EMA=0.102344    Memory Used=176.10 MBs (avg) 176.79 MBs (max on rank: 31    )
+Warning: finalizeContributions not implemented for LoadBalancerCommon.
+Warning: resetCostForecaster not implemented for LoadBalancerCommon.
+Compiling taskgraph(s)...
+------------------------------------------------
+SETTING BOUNDARY CONDITIONS:
+------------------------------------------------
+Setting BCs for transport equation 'x-mom'
+Setting BCs for transport equation 'y-mom'
+Setting BCs for transport equation 'z-mom'
+------------------------------------------------
+writing pre-cleave tree to rhs_1_original.dot
+Wasatch: done creating solution task(s)
+writing pre-cleave tree to rhs_2_original.dot
+Wasatch: done creating solution task(s)
+writing pre-cleave tree to rhs_3_original.dot
+Wasatch: done creating solution task(s)
+Wasatch: done creating post-processing task(s)
+Scheduling Task 'compute timestep' COMPUTES 'delT' in NEW data warehouse
+Wasatch: done creating timestep task(s)
+Done with taskgraph compile (0.0820242 seconds)
+Solve of pressure on level 0 completed in 0.128893 s (solve only: 0.116059 s, 11 iterations, residual = 1.61814e-09).
+Solve of pressure on level 0 completed in 0.0910555 s (solve only: 0.0859738 s, 7 iterations, residual = 3.22038e-09).
+Solve of pressure on level 0 completed in 0.0704543 s (solve only: 0.0656995 s, 7 iterations, residual = 9.13137e-09).
+Timestep 1       Time=0.0001      Next delT=8.23266e-05 Wall Time=0.613013  EMA=0.50174     Memory Used=236.10 MBs (avg) 242.06 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 1 at time=0.0001
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  Compilation       [seconds] : 0.0369289       : 25   : 0.0449045       : 0.00898293      : 0.0820242       : 0    : 45.2546
+  TaskExec          [seconds] : 0.390769        : 1    : 0.395203        : 0.00292815      : 0.402233        : 17   : 1.74782
+  TaskLocalComm     [seconds] : 0.0111782       : 24   : 0.0160059       : 0.00340953      : 0.022276        : 21   : 28.1474
+  TaskWaitCommTime  [seconds] : 0.0232777       : 0    : 0.0542621       : 0.010585        : 0.0685709       : 1    : 20.8671
+  NumberOfTasks     [tasks  ] : 43              : 0    : 43              : 0               : 43              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3065e+08      : 6    : 2.36103e+08     : 3.49977e+06     : 2.42057e+08     : 13   : 2.45972
+  SCIMemoryMaxUsed  [MBytes ] : 2.3065e+08      : 6    : 2.36103e+08     : 3.49977e+06     : 2.42057e+08     : 13   : 2.45972
+  MemoryUsed        [MBytes ] : 8.25115e+08     : 2    : 8.60798e+08     : 1.85634e+07     : 8.89528e+08     : 21   : 3.22984
+  MemoryResident    [MBytes ] : 2.3065e+08      : 6    : 2.36103e+08     : 3.49977e+06     : 2.42057e+08     : 13   : 2.45972
+  Percentage of time spent in overhead : 8.79833
+Solve of pressure on level 0 completed in 0.0780023 s (solve only: 0.0761733 s, 12 iterations, residual = 2.97246e-09).
+Solve of pressure on level 0 completed in 0.059797 s (solve only: 0.0579278 s, 9 iterations, residual = 2.22934e-09).
+Solve of pressure on level 0 completed in 0.0553505 s (solve only: 0.0535207 s, 8 iterations, residual = 8.9774e-09).
+Timestep 2       Time=0.000182327 Next delT=8.39492e-05 Wall Time=0.891173  EMA=0.352686    Memory Used=241.06 MBs (avg) 246.67 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 2 at time=0.000182327
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.251046        : 0    : 0.256713        : 0.00348088      : 0.26187         : 1    : 1.96943
+  TaskLocalComm     [seconds] : 0.0115065       : 25   : 0.0163961       : 0.00319361      : 0.0224524       : 19   : 26.9739
+  TaskWaitCommTime  [seconds] : 0.00609009      : 19   : 0.0143009       : 0.00483289      : 0.0217067       : 7    : 34.1176
+  NumberOfTasks     [tasks  ] : 43              : 0    : 43              : 0               : 43              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.36769e+08     : 1    : 2.41057e+08     : 3.09311e+06     : 2.46669e+08     : 13   : 2.27533
+  SCIMemoryMaxUsed  [MBytes ] : 2.36769e+08     : 1    : 2.41057e+08     : 3.09311e+06     : 2.46669e+08     : 13   : 2.27533
+  MemoryUsed        [MBytes ] : 8.29149e+08     : 2    : 8.65336e+08     : 1.83942e+07     : 8.93342e+08     : 21   : 3.13492
+  MemoryResident    [MBytes ] : 2.36769e+08     : 1    : 2.41057e+08     : 3.09311e+06     : 2.46669e+08     : 13   : 2.27533
+  Percentage of time spent in overhead : 4.39913
+Compiling taskgraph(s)...
+------------------------------------------------
+SETTING BOUNDARY CONDITIONS:
+------------------------------------------------
+Setting BCs for transport equation 'x-mom'
+Setting BCs for transport equation 'y-mom'
+Setting BCs for transport equation 'z-mom'
+------------------------------------------------
+writing pre-cleave tree to rhs_1_original.dot
+Wasatch: done creating solution task(s)
+writing pre-cleave tree to rhs_2_original.dot
+Wasatch: done creating solution task(s)
+writing pre-cleave tree to rhs_3_original.dot
+Wasatch: done creating solution task(s)
+Wasatch: done creating post-processing task(s)
+Scheduling Task 'compute timestep' COMPUTES 'delT' in NEW data warehouse
+Wasatch: done creating timestep task(s)
+Done with taskgraph compile (0.0571897 seconds)
+Solve of pressure on level 0 completed in 0.0756093 s (solve only: 0.0738608 s, mean: 0.0738608 s, 9 iterations, residual = 1.99305e-09).
+Timestep 3       Time=0.000266276 Next delT=8.50756e-05 Wall Time=1.12425   EMA=0.292883    Memory Used=241.84 MBs (avg) 247.53 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 3 at time=0.000266276
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  Compilation       [seconds] : 0.022243        : 25   : 0.0291889       : 0.00669963      : 0.0571897       : 0    : 48.9612
+  TaskExec          [seconds] : 0.126637        : 0    : 0.133746        : 0.00633064      : 0.159524        : 27   : 16.1596
+  TaskLocalComm     [seconds] : 0.00937385      : 25   : 0.0142673       : 0.00327963      : 0.020981        : 27   : 31.999
+  TaskWaitCommTime  [seconds] : 0.0371714       : 27   : 0.0630195       : 0.0105531       : 0.0785301       : 25   : 19.7512
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.36859e+08     : 6    : 2.41841e+08     : 3.34337e+06     : 2.47534e+08     : 13   : 2.2996
+  SCIMemoryMaxUsed  [MBytes ] : 2.36859e+08     : 6    : 2.41841e+08     : 3.34337e+06     : 2.47534e+08     : 13   : 2.2996
+  MemoryUsed        [MBytes ] : 8.30091e+08     : 2    : 8.65933e+08     : 1.8413e+07      : 8.94304e+08     : 21   : 3.17242
+  MemoryResident    [MBytes ] : 2.36859e+08     : 6    : 2.41841e+08     : 3.34337e+06     : 2.47534e+08     : 13   : 2.2996
+  Percentage of time spent in overhead : 6.98302
+Solve of pressure on level 0 completed in 0.0671283 s (solve only: 0.0652755 s, mean: 0.0681372 s, 9 iterations, residual = 2.30664e-09).
+Timestep 4       Time=0.000351351 Next delT=8.63662e-05 Wall Time=1.29221   EMA=0.242914    Memory Used=243.51 MBs (avg) 249.42 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 4 at time=0.000351351
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.119177        : 30   : 0.126276        : 0.00499508      : 0.143738        : 19   : 12.1489
+  TaskLocalComm     [seconds] : 0.010098        : 7    : 0.0146503       : 0.00315964      : 0.0247533       : 19   : 40.8149
+  TaskWaitCommTime  [seconds] : 0.0119825       : 19   : 0.0345696       : 0.00644826      : 0.0435208       : 30   : 20.5677
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3844e+08      : 30   : 2.43506e+08     : 3.4738e+06      : 2.49422e+08     : 13   : 2.3719
+  SCIMemoryMaxUsed  [MBytes ] : 2.3844e+08      : 30   : 2.43506e+08     : 3.4738e+06      : 2.49422e+08     : 13   : 2.3719
+  MemoryUsed        [MBytes ] : 8.3198e+08      : 2    : 8.67522e+08     : 1.83799e+07     : 8.95922e+08     : 20   : 3.16995
+  MemoryResident    [MBytes ] : 2.3844e+08      : 30   : 2.43506e+08     : 3.4738e+06      : 2.49422e+08     : 13   : 2.3719
+  Percentage of time spent in overhead : 5.23705
+Solve of pressure on level 0 completed in 0.0768887 s (solve only: 0.0750745 s, mean: 0.0716059 s, 9 iterations, residual = 2.23592e-09).
+Timestep 5       Time=0.000437718 Next delT=8.7694e-05  Wall Time=1.46578   EMA=0.219798    Memory Used=243.76 MBs (avg) 249.68 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 5 at time=0.000437718
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.127016        : 0    : 0.134703        : 0.00551703      : 0.146107        : 1    : 7.80539
+  TaskLocalComm     [seconds] : 0.00898803      : 6    : 0.013817        : 0.00311336      : 0.0204384       : 13   : 32.397
+  TaskWaitCommTime  [seconds] : 0.0173949       : 13   : 0.0316018       : 0.00675523      : 0.0413311       : 6    : 23.5398
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.37556e+08     : 30   : 2.43761e+08     : 3.6093e+06      : 2.49676e+08     : 13   : 2.36918
+  SCIMemoryMaxUsed  [MBytes ] : 2.37556e+08     : 30   : 2.43761e+08     : 3.6093e+06      : 2.49676e+08     : 13   : 2.36918
+  MemoryUsed        [MBytes ] : 8.31033e+08     : 2    : 8.67673e+08     : 1.84808e+07     : 8.9598e+08      : 21   : 3.1593
+  MemoryResident    [MBytes ] : 2.37556e+08     : 30   : 2.43761e+08     : 3.6093e+06      : 2.49676e+08     : 13   : 2.36918
+  Percentage of time spent in overhead : 4.18908
+Solve of pressure on level 0 completed in 0.0612083 s (solve only: 0.0593551 s, mean: 0.0667056 s, 9 iterations, residual = 2.31736e-09).
+Timestep 6       Time=0.000525412 Next delT=8.90829e-05 Wall Time=1.61581   EMA=0.199864    Memory Used=244.15 MBs (avg) 249.68 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 6 at time=0.000525412
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113305        : 0    : 0.121116        : 0.00438991      : 0.133055        : 31   : 8.9732
+  TaskLocalComm     [seconds] : 0.00936661      : 30   : 0.0137505       : 0.00265587      : 0.0181107       : 13   : 24.0755
+  TaskWaitCommTime  [seconds] : 0.00972865      : 31   : 0.0215669       : 0.00548193      : 0.0311859       : 0    : 30.8439
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38633e+08     : 30   : 2.44149e+08     : 3.5777e+06      : 2.49676e+08     : 13   : 2.21343
+  SCIMemoryMaxUsed  [MBytes ] : 2.38633e+08     : 30   : 2.44149e+08     : 3.5777e+06      : 2.49676e+08     : 13   : 2.21343
+  MemoryUsed        [MBytes ] : 8.32258e+08     : 2    : 8.68039e+08     : 1.85373e+07     : 8.96311e+08     : 21   : 3.15428
+  MemoryResident    [MBytes ] : 2.38633e+08     : 30   : 2.44149e+08     : 3.5777e+06      : 2.49676e+08     : 13   : 2.21343
+  Percentage of time spent in overhead : 3.48986
+Solve of pressure on level 0 completed in 0.0866191 s (solve only: 0.0847877 s, mean: 0.072733 s, 9 iterations, residual = 2.32783e-09).
+Timestep 7       Time=0.000614495 Next delT=9.05355e-05 Wall Time=1.80126   EMA=0.196262    Memory Used=243.95 MBs (avg) 249.54 MBs (max on rank: 12    )
+Runtime Summary  summary stats for time step 7 at time=0.000614495
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.138329        : 30   : 0.146492        : 0.00512955      : 0.164431        : 21   : 10.91
+  TaskLocalComm     [seconds] : 0.00916888      : 30   : 0.0139545       : 0.00330266      : 0.0246575       : 21   : 43.4068
+  TaskWaitCommTime  [seconds] : 0.00774962      : 21   : 0.0317408       : 0.00670899      : 0.0417928       : 30   : 24.0521
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38027e+08     : 25   : 2.43949e+08     : 3.61709e+06     : 2.49545e+08     : 12   : 2.24224
+  SCIMemoryMaxUsed  [MBytes ] : 2.38027e+08     : 25   : 2.43949e+08     : 3.61709e+06     : 2.49545e+08     : 12   : 2.24224
+  MemoryUsed        [MBytes ] : 8.32569e+08     : 2    : 8.67678e+08     : 1.85038e+07     : 8.96238e+08     : 20   : 3.18664
+  MemoryResident    [MBytes ] : 2.38027e+08     : 25   : 2.43949e+08     : 3.61709e+06     : 2.49545e+08     : 12   : 2.24224
+  Percentage of time spent in overhead : 2.9897
+Solve of pressure on level 0 completed in 0.083511 s (solve only: 0.0816598 s, mean: 0.0752835 s, 9 iterations, residual = 2.34831e-09).
+Timestep 8       Time=0.00070503  Next delT=9.204e-05   Wall Time=1.96933   EMA=0.189996    Memory Used=244.43 MBs (avg) 250.13 MBs (max on rank: 20    )
+Runtime Summary  summary stats for time step 8 at time=0.00070503
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.138067        : 6    : 0.145885        : 0.00361217      : 0.152179        : 11   : 4.136
+  TaskLocalComm     [seconds] : 0.00917063      : 0    : 0.0137505       : 0.00264562      : 0.0189628       : 13   : 27.4871
+  TaskWaitCommTime  [seconds] : 0.00559473      : 11   : 0.0145222       : 0.00497947      : 0.0242841       : 6    : 40.1986
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3883e+08      : 25   : 2.44426e+08     : 3.64913e+06     : 2.50126e+08     : 20   : 2.27909
+  SCIMemoryMaxUsed  [MBytes ] : 2.3883e+08      : 25   : 2.44426e+08     : 3.64913e+06     : 2.50126e+08     : 20   : 2.27909
+  MemoryUsed        [MBytes ] : 8.32885e+08     : 2    : 8.68156e+08     : 1.86026e+07     : 8.96864e+08     : 20   : 3.20093
+  MemoryResident    [MBytes ] : 2.3883e+08      : 25   : 2.44426e+08     : 3.64913e+06     : 2.50126e+08     : 20   : 2.27909
+  Percentage of time spent in overhead : 2.61379
+Solve of pressure on level 0 completed in 0.0829813 s (solve only: 0.0811406 s, mean: 0.0767478 s, 9 iterations, residual = 2.38077e-09).
+Timestep 9       Time=0.00079707  Next delT=9.35978e-05 Wall Time=2.15976   EMA=0.190082    Memory Used=244.18 MBs (avg) 250.13 MBs (max on rank: 20    )
+Runtime Summary  summary stats for time step 9 at time=0.00079707
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.131599        : 0    : 0.140722        : 0.00701069      : 0.168766        : 13   : 16.617
+  TaskLocalComm     [seconds] : 0.00832441      : 6    : 0.0130254       : 0.00345042      : 0.0258004       : 13   : 49.5146
+  TaskWaitCommTime  [seconds] : 0.00806027      : 13   : 0.0422744       : 0.00849246      : 0.0532737       : 0    : 20.6469
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38055e+08     : 25   : 2.44185e+08     : 3.54677e+06     : 2.50126e+08     : 20   : 2.3755
+  SCIMemoryMaxUsed  [MBytes ] : 2.38055e+08     : 25   : 2.44185e+08     : 3.54677e+06     : 2.50126e+08     : 20   : 2.3755
+  MemoryUsed        [MBytes ] : 8.30054e+08     : 2    : 8.67749e+08     : 1.87216e+07     : 8.96864e+08     : 20   : 3.24631
+  MemoryResident    [MBytes ] : 2.38055e+08     : 25   : 2.44185e+08     : 3.54677e+06     : 2.50126e+08     : 20   : 2.3755
+  Percentage of time spent in overhead : 2.32053
+Solve of pressure on level 0 completed in 0.0768589 s (solve only: 0.0750517 s, mean: 0.0763709 s, 9 iterations, residual = 2.4093e-09).
+Timestep 10      Time=0.000890668 Next delT=9.52092e-05 Wall Time=2.31941   EMA=0.18455     Memory Used=244.65 MBs (avg) 250.58 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 10 at time=0.000890668
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.130278        : 0    : 0.137021        : 0.00363481      : 0.144282        : 11   : 5.03257
+  TaskLocalComm     [seconds] : 0.0087138       : 0    : 0.0128465       : 0.00257256      : 0.018075        : 11   : 28.9268
+  TaskWaitCommTime  [seconds] : 0.00516737      : 11   : 0.0155082       : 0.00499578      : 0.0240743       : 0    : 35.5819
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39129e+08     : 25   : 2.44651e+08     : 3.7255e+06      : 2.50581e+08     : 13   : 2.36634
+  SCIMemoryMaxUsed  [MBytes ] : 2.39129e+08     : 25   : 2.44651e+08     : 3.7255e+06      : 2.50581e+08     : 13   : 2.36634
+  MemoryUsed        [MBytes ] : 8.32258e+08     : 2    : 8.68199e+08     : 1.84491e+07     : 8.96864e+08     : 20   : 3.1962
+  MemoryResident    [MBytes ] : 2.39129e+08     : 25   : 2.44651e+08     : 3.7255e+06      : 2.50581e+08     : 13   : 2.36634
+  Percentage of time spent in overhead : 2.08498
+Solve of pressure on level 0 completed in 0.0611802 s (solve only: 0.0593127 s, mean: 0.0729592 s, 9 iterations, residual = 2.43845e-09).
+Timestep 11      Time=0.000985877 Next delT=9.68732e-05 Wall Time=2.4598    EMA=0.17652     Memory Used=244.51 MBs (avg) 249.82 MBs (max on rank: 12    )
+Runtime Summary  summary stats for time step 11 at time=0.000985877
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.114275        : 0    : 0.120538        : 0.00321103      : 0.125579        : 19   : 4.01415
+  TaskLocalComm     [seconds] : 0.0087163       : 0    : 0.0127072       : 0.00237367      : 0.0170749       : 19   : 25.5801
+  TaskWaitCommTime  [seconds] : 0.0049702       : 19   : 0.0126352       : 0.00457873      : 0.0206802       : 0    : 38.9021
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39399e+08     : 1    : 2.44513e+08     : 3.46713e+06     : 2.49815e+08     : 12   : 2.12248
+  SCIMemoryMaxUsed  [MBytes ] : 2.39399e+08     : 1    : 2.44513e+08     : 3.46713e+06     : 2.49815e+08     : 12   : 2.12248
+  MemoryUsed        [MBytes ] : 8.31283e+08     : 2    : 8.67981e+08     : 1.86019e+07     : 8.95607e+08     : 20   : 3.08458
+  MemoryResident    [MBytes ] : 2.39399e+08     : 1    : 2.44513e+08     : 3.46713e+06     : 2.49815e+08     : 12   : 2.12248
+  Percentage of time spent in overhead : 1.89126
+Solve of pressure on level 0 completed in 0.0784673 s (solve only: 0.0766179 s, mean: 0.0736244 s, 9 iterations, residual = 2.46945e-09).
+Timestep 12      Time=0.00108275  Next delT=9.85891e-05 Wall Time=2.62018   EMA=0.173586    Memory Used=244.90 MBs (avg) 250.85 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 12 at time=0.00108275
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.13086         : 24   : 0.138272        : 0.00390808      : 0.145296        : 13   : 4.83463
+  TaskLocalComm     [seconds] : 0.00835693      : 0    : 0.0127766       : 0.00255977      : 0.0173779       : 13   : 26.4777
+  TaskWaitCommTime  [seconds] : 0.00548669      : 13   : 0.0149621       : 0.00523554      : 0.0239668       : 24   : 37.5716
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38092e+08     : 25   : 2.44899e+08     : 3.78478e+06     : 2.50851e+08     : 21   : 2.37292
+  SCIMemoryMaxUsed  [MBytes ] : 2.38092e+08     : 25   : 2.44899e+08     : 3.78478e+06     : 2.50851e+08     : 21   : 2.37292
+  MemoryUsed        [MBytes ] : 8.32057e+08     : 2    : 8.68244e+08     : 1.85429e+07     : 8.96872e+08     : 21   : 3.19199
+  MemoryResident    [MBytes ] : 2.38092e+08     : 25   : 2.44899e+08     : 3.78478e+06     : 2.50851e+08     : 21   : 2.37292
+  Percentage of time spent in overhead : 1.72879
+Solve of pressure on level 0 completed in 0.0759672 s (solve only: 0.0741453 s, mean: 0.0737192 s, 9 iterations, residual = 2.50117e-09).
+Timestep 13      Time=0.00118134  Next delT=0.000100357 Wall Time=2.7828    EMA=0.171592    Memory Used=244.83 MBs (avg) 251.12 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 13 at time=0.00118134
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.128503        : 0    : 0.134912        : 0.00363747      : 0.145998        : 21   : 7.59292
+  TaskLocalComm     [seconds] : 0.00818056      : 0    : 0.0126512       : 0.00258259      : 0.0191543       : 21   : 33.9509
+  TaskWaitCommTime  [seconds] : 0.00573355      : 21   : 0.020519        : 0.00501716      : 0.0287551       : 0    : 28.6424
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38137e+08     : 6    : 2.44825e+08     : 3.77375e+06     : 2.51122e+08     : 21   : 2.50738
+  SCIMemoryMaxUsed  [MBytes ] : 2.38137e+08     : 6    : 2.44825e+08     : 3.77375e+06     : 2.51122e+08     : 21   : 2.50738
+  MemoryUsed        [MBytes ] : 8.31111e+08     : 2    : 8.68117e+08     : 1.87477e+07     : 8.97196e+08     : 21   : 3.24112
+  MemoryResident    [MBytes ] : 2.38137e+08     : 6    : 2.44825e+08     : 3.77375e+06     : 2.51122e+08     : 21   : 2.50738
+  Percentage of time spent in overhead : 1.59023
+Solve of pressure on level 0 completed in 0.0768365 s (solve only: 0.0750125 s, mean: 0.0739543 s, 9 iterations, residual = 2.53377e-09).
+Timestep 14      Time=0.0012817   Next delT=0.000102176 Wall Time=2.95531   EMA=0.17176     Memory Used=245.07 MBs (avg) 251.79 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 14 at time=0.0012817
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.127683        : 0    : 0.135495        : 0.00488213      : 0.153332        : 19   : 11.6327
+  TaskLocalComm     [seconds] : 0.00814949      : 0    : 0.0125364       : 0.00284888      : 0.0217007       : 19   : 42.2302
+  TaskWaitCommTime  [seconds] : 0.00663374      : 19   : 0.0297901       : 0.00637643      : 0.0394978       : 0    : 24.5778
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39436e+08     : 25   : 2.45069e+08     : 3.72116e+06     : 2.51789e+08     : 21   : 2.66885
+  SCIMemoryMaxUsed  [MBytes ] : 2.39436e+08     : 25   : 2.45069e+08     : 3.72116e+06     : 2.51789e+08     : 21   : 2.66885
+  MemoryUsed        [MBytes ] : 8.32057e+08     : 2    : 8.68364e+08     : 1.85566e+07     : 8.97769e+08     : 21   : 3.2754
+  MemoryResident    [MBytes ] : 2.39436e+08     : 25   : 2.45069e+08     : 3.72116e+06     : 2.51789e+08     : 21   : 2.66885
+  Percentage of time spent in overhead : 1.47034
+Solve of pressure on level 0 completed in 0.0699163 s (solve only: 0.068088 s, mean: 0.0728877 s, 9 iterations, residual = 2.56739e-09).
+Timestep 15      Time=0.00138387  Next delT=0.000104045 Wall Time=3.1121    EMA=0.169038    Memory Used=245.24 MBs (avg) 252.06 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 15 at time=0.00138387
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.120246        : 6    : 0.127332        : 0.00406458      : 0.139322        : 23   : 8.60595
+  TaskLocalComm     [seconds] : 0.00841693      : 0    : 0.012488        : 0.00264556      : 0.017115        : 23   : 27.0349
+  TaskWaitCommTime  [seconds] : 0.00872092      : 23   : 0.0222424       : 0.00528061      : 0.0313997       : 6    : 29.1636
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39309e+08     : 30   : 2.45238e+08     : 3.70131e+06     : 2.5206e+08      : 21   : 2.70651
+  SCIMemoryMaxUsed  [MBytes ] : 2.39309e+08     : 30   : 2.45238e+08     : 3.70131e+06     : 2.5206e+08      : 21   : 2.70651
+  MemoryUsed        [MBytes ] : 8.32369e+08     : 2    : 8.68513e+08     : 1.84551e+07     : 8.97769e+08     : 21   : 3.25878
+  MemoryResident    [MBytes ] : 2.39309e+08     : 30   : 2.45238e+08     : 3.70131e+06     : 2.5206e+08      : 21   : 2.70651
+  Percentage of time spent in overhead : 1.36527
+Solve of pressure on level 0 completed in 0.0828811 s (solve only: 0.0811118 s, mean: 0.074383 s, 9 iterations, residual = 2.60202e-09).
+Timestep 16      Time=0.00148792  Next delT=0.000105967 Wall Time=3.27539   EMA=0.167991    Memory Used=244.80 MBs (avg) 251.11 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 16 at time=0.00148792
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.135781        : 24   : 0.142883        : 0.00328521      : 0.148061        : 13   : 3.49772
+  TaskLocalComm     [seconds] : 0.00789188      : 0    : 0.0124318       : 0.00240452      : 0.0168262       : 21   : 26.1163
+  TaskWaitCommTime  [seconds] : 0.00558174      : 11   : 0.0131922       : 0.00459458      : 0.021922        : 24   : 39.8223
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39309e+08     : 30   : 2.44799e+08     : 3.66507e+06     : 2.51105e+08     : 21   : 2.51142
+  SCIMemoryMaxUsed  [MBytes ] : 2.39309e+08     : 30   : 2.44799e+08     : 3.66507e+06     : 2.51105e+08     : 21   : 2.51142
+  MemoryUsed        [MBytes ] : 8.32684e+08     : 2    : 8.67902e+08     : 1.855e+07       : 8.96475e+08     : 21   : 3.1873
+  MemoryResident    [MBytes ] : 2.39309e+08     : 30   : 2.44799e+08     : 3.66507e+06     : 2.51105e+08     : 21   : 2.51142
+  Percentage of time spent in overhead : 1.27214
+Solve of pressure on level 0 completed in 0.0754615 s (solve only: 0.0736303 s, mean: 0.0742461 s, 9 iterations, residual = 2.63772e-09).
+Timestep 17      Time=0.00159388  Next delT=0.000107939 Wall Time=3.43874   EMA=0.167147    Memory Used=245.24 MBs (avg) 251.31 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 17 at time=0.00159388
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.126569        : 0    : 0.134092        : 0.00434779      : 0.145862        : 3    : 8.06968
+  TaskLocalComm     [seconds] : 0.00794096      : 0    : 0.0121654       : 0.00255428      : 0.0167686       : 11   : 27.4517
+  TaskWaitCommTime  [seconds] : 0.00901525      : 3    : 0.0220675       : 0.00554033      : 0.031455        : 0    : 29.8443
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39309e+08     : 30   : 2.45242e+08     : 3.73083e+06     : 2.51314e+08     : 13   : 2.41623
+  SCIMemoryMaxUsed  [MBytes ] : 2.39309e+08     : 30   : 2.45242e+08     : 3.73083e+06     : 2.51314e+08     : 13   : 2.41623
+  MemoryUsed        [MBytes ] : 8.31742e+08     : 2    : 8.6842e+08      : 1.85008e+07     : 8.96799e+08     : 21   : 3.16439
+  MemoryResident    [MBytes ] : 2.39309e+08     : 30   : 2.45242e+08     : 3.73083e+06     : 2.51314e+08     : 13   : 2.41623
+  Percentage of time spent in overhead : 1.18874
+Solve of pressure on level 0 completed in 0.0837794 s (solve only: 0.0819282 s, mean: 0.0756429 s, 9 iterations, residual = 2.67458e-09).
+Timestep 18      Time=0.00170182  Next delT=0.000109964 Wall Time=3.60259   EMA=0.166548    Memory Used=245.23 MBs (avg) 251.64 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 18 at time=0.00170182
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.138101        : 0    : 0.144378        : 0.00324784      : 0.149128        : 13   : 3.18513
+  TaskLocalComm     [seconds] : 0.00818372      : 0    : 0.0122334       : 0.00235241      : 0.0161753       : 21   : 24.3697
+  TaskWaitCommTime  [seconds] : 0.0050679       : 19   : 0.0122631       : 0.00460076      : 0.0203645       : 0    : 39.782
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39194e+08     : 31   : 2.45228e+08     : 3.61932e+06     : 2.51642e+08     : 21   : 2.54899
+  SCIMemoryMaxUsed  [MBytes ] : 2.39194e+08     : 31   : 2.45228e+08     : 3.61932e+06     : 2.51642e+08     : 21   : 2.54899
+  MemoryUsed        [MBytes ] : 8.32369e+08     : 2    : 8.6833e+08      : 1.84016e+07     : 8.97122e+08     : 21   : 3.20945
+  MemoryResident    [MBytes ] : 2.39194e+08     : 31   : 2.45228e+08     : 3.61932e+06     : 2.51642e+08     : 21   : 2.54899
+  Percentage of time spent in overhead : 1.11335
+Solve of pressure on level 0 completed in 0.0824018 s (solve only: 0.0804888 s, mean: 0.076524 s, 9 iterations, residual = 2.71273e-09).
+Timestep 19      Time=0.00181179  Next delT=0.000112041 Wall Time=3.76526   EMA=0.165843    Memory Used=245.31 MBs (avg) 251.64 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 19 at time=0.00181179
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.136412        : 24   : 0.142755        : 0.00346598      : 0.148104        : 13   : 3.61149
+  TaskLocalComm     [seconds] : 0.00843806      : 6    : 0.0122699       : 0.00236825      : 0.0162831       : 21   : 24.6464
+  TaskWaitCommTime  [seconds] : 0.00488952      : 13   : 0.0127237       : 0.00480459      : 0.0207232       : 24   : 38.6017
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39038e+08     : 30   : 2.4531e+08      : 3.74477e+06     : 2.51642e+08     : 21   : 2.51624
+  SCIMemoryMaxUsed  [MBytes ] : 2.39038e+08     : 30   : 2.4531e+08      : 3.74477e+06     : 2.51642e+08     : 21   : 2.51624
+  MemoryUsed        [MBytes ] : 8.32369e+08     : 2    : 8.68417e+08     : 1.8419e+07      : 8.97122e+08     : 21   : 3.19969
+  MemoryResident    [MBytes ] : 2.39038e+08     : 30   : 2.4531e+08      : 3.74477e+06     : 2.51642e+08     : 21   : 2.51624
+  Percentage of time spent in overhead : 1.04458
+Solve of pressure on level 0 completed in 0.0607 s (solve only: 0.0587988 s, mean: 0.0733012 s, 9 iterations, residual = 2.75229e-09).
+Timestep 20      Time=0.00192383  Next delT=0.000114172 Wall Time=3.91687   EMA=0.163256    Memory Used=245.23 MBs (avg) 251.64 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 20 at time=0.00192383
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.111108        : 24   : 0.118644        : 0.00539746      : 0.135156        : 5    : 12.2174
+  TaskLocalComm     [seconds] : 0.00783866      : 6    : 0.0121978       : 0.00273155      : 0.017109        : 5    : 28.705
+  TaskWaitCommTime  [seconds] : 0.00676171      : 5    : 0.0255665       : 0.00659381      : 0.035055        : 24   : 27.0675
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39305e+08     : 30   : 2.45227e+08     : 3.5629e+06      : 2.51642e+08     : 21   : 2.5492
+  SCIMemoryMaxUsed  [MBytes ] : 2.39305e+08     : 30   : 2.45227e+08     : 3.5629e+06      : 2.51642e+08     : 21   : 2.5492
+  MemoryUsed        [MBytes ] : 8.32369e+08     : 2    : 8.68318e+08     : 1.83733e+07     : 8.97122e+08     : 21   : 3.21078
+  MemoryResident    [MBytes ] : 2.39305e+08     : 30   : 2.45227e+08     : 3.5629e+06      : 2.51642e+08     : 21   : 2.5492
+  Percentage of time spent in overhead : 0.981351
+Solve of pressure on level 0 completed in 0.0756532 s (solve only: 0.0737846 s, mean: 0.0733891 s, 9 iterations, residual = 2.79342e-09).
+Timestep 21      Time=0.002038    Next delT=0.000116358 Wall Time=4.07668   EMA=0.16263     Memory Used=245.49 MBs (avg) 252.30 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 21 at time=0.002038
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.126952        : 0    : 0.133833        : 0.00388354      : 0.142901        : 25   : 6.34576
+  TaskLocalComm     [seconds] : 0.00823247      : 0    : 0.0121807       : 0.00223477      : 0.016254        : 11   : 25.0605
+  TaskWaitCommTime  [seconds] : 0.0103206       : 25   : 0.0188181       : 0.00495287      : 0.0276375       : 6    : 31.9111
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39141e+08     : 25   : 2.45495e+08     : 3.78241e+06     : 2.52301e+08     : 13   : 2.69778
+  SCIMemoryMaxUsed  [MBytes ] : 2.39141e+08     : 25   : 2.45495e+08     : 3.78241e+06     : 2.52301e+08     : 13   : 2.69778
+  MemoryUsed        [MBytes ] : 8.32369e+08     : 2    : 8.68554e+08     : 1.84472e+07     : 8.97466e+08     : 21   : 3.22156
+  MemoryResident    [MBytes ] : 2.39141e+08     : 25   : 2.45495e+08     : 3.78241e+06     : 2.52301e+08     : 13   : 2.69778
+  Percentage of time spent in overhead : 0.922761
+Solve of pressure on level 0 completed in 0.0793246 s (solve only: 0.0774745 s, mean: 0.0741319 s, 9 iterations, residual = 2.83632e-09).
+Timestep 22      Time=0.00215436  Next delT=0.000118602 Wall Time=4.23934   EMA=0.162633    Memory Used=245.50 MBs (avg) 251.91 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 22 at time=0.00215436
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.130703        : 24   : 0.137248        : 0.00367514      : 0.144263        : 25   : 4.8625
+  TaskLocalComm     [seconds] : 0.00830697      : 0    : 0.0121913       : 0.00246811      : 0.0164477       : 21   : 25.8786
+  TaskWaitCommTime  [seconds] : 0.0104813       : 27   : 0.0180588       : 0.00494152      : 0.0264583       : 24   : 31.7462
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39407e+08     : 25   : 2.45502e+08     : 3.68735e+06     : 2.51912e+08     : 21   : 2.54443
+  SCIMemoryMaxUsed  [MBytes ] : 2.39407e+08     : 25   : 2.45502e+08     : 3.68735e+06     : 2.51912e+08     : 21   : 2.54443
+  MemoryUsed        [MBytes ] : 8.32369e+08     : 2    : 8.6852e+08      : 1.82912e+07     : 8.97466e+08     : 21   : 3.22535
+  MemoryResident    [MBytes ] : 2.39407e+08     : 25   : 2.45502e+08     : 3.68735e+06     : 2.51912e+08     : 21   : 2.54443
+  Percentage of time spent in overhead : 0.868071
+Solve of pressure on level 0 completed in 0.0836111 s (solve only: 0.0818102 s, mean: 0.0755279 s, 9 iterations, residual = 2.88116e-09).
+Timestep 23      Time=0.00227296  Next delT=0.000120904 Wall Time=4.41798   EMA=0.165545    Memory Used=245.37 MBs (avg) 251.91 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 23 at time=0.00227296
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.133814        : 0    : 0.141533        : 0.00627143      : 0.161176        : 27   : 12.1874
+  TaskLocalComm     [seconds] : 0.00797166      : 6    : 0.0122411       : 0.00305801      : 0.0191901       : 5    : 36.2112
+  TaskWaitCommTime  [seconds] : 0.00679637      : 5    : 0.0297021       : 0.00771273      : 0.0394028       : 6    : 24.6194
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39145e+08     : 25   : 2.45366e+08     : 3.74666e+06     : 2.51912e+08     : 21   : 2.5987
+  SCIMemoryMaxUsed  [MBytes ] : 2.39145e+08     : 25   : 2.45366e+08     : 3.74666e+06     : 2.51912e+08     : 21   : 2.5987
+  MemoryUsed        [MBytes ] : 8.32684e+08     : 2    : 8.68346e+08     : 1.83662e+07     : 8.97466e+08     : 21   : 3.24472
+  MemoryResident    [MBytes ] : 2.39145e+08     : 25   : 2.45366e+08     : 3.74666e+06     : 2.51912e+08     : 21   : 2.5987
+  Percentage of time spent in overhead : 0.816664
+Solve of pressure on level 0 completed in 0.0611162 s (solve only: 0.0592384 s, mean: 0.0725662 s, 9 iterations, residual = 2.9281e-09).
+Timestep 24      Time=0.00239386  Next delT=0.000123186 Wall Time=4.55732   EMA=0.16078     Memory Used=245.42 MBs (avg) 252.48 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 24 at time=0.00239386
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113283        : 0    : 0.11971         : 0.00348249      : 0.12465         : 13   : 3.96286
+  TaskLocalComm     [seconds] : 0.00816384      : 0    : 0.012045        : 0.0024079       : 0.0162053       : 21   : 25.6723
+  TaskWaitCommTime  [seconds] : 0.00501323      : 13   : 0.012484        : 0.0048418       : 0.0206462       : 0    : 39.5335
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.37548e+08     : 25   : 2.45422e+08     : 3.86434e+06     : 2.52482e+08     : 13   : 2.79588
+  SCIMemoryMaxUsed  [MBytes ] : 2.37548e+08     : 25   : 2.45422e+08     : 3.86434e+06     : 2.52482e+08     : 13   : 2.79588
+  MemoryUsed        [MBytes ] : 8.32684e+08     : 2    : 8.68435e+08     : 1.84818e+07     : 8.97466e+08     : 21   : 3.23479
+  MemoryResident    [MBytes ] : 2.37548e+08     : 25   : 2.45422e+08     : 3.86434e+06     : 2.52482e+08     : 13   : 2.79588
+  Percentage of time spent in overhead : 0.768016
+Solve of pressure on level 0 completed in 0.0607826 s (solve only: 0.0589116 s, mean: 0.0700836 s, 9 iterations, residual = 2.97732e-09).
+Timestep 25      Time=0.00251705  Next delT=0.000122846 Wall Time=4.69638   EMA=0.156831    Memory Used=245.38 MBs (avg) 251.91 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 25 at time=0.00251705
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113575        : 24   : 0.119439        : 0.00342046      : 0.124485        : 19   : 4.05313
+  TaskLocalComm     [seconds] : 0.0083531       : 0    : 0.0120356       : 0.00238872      : 0.015998        : 11   : 24.7681
+  TaskWaitCommTime  [seconds] : 0.00483513      : 19   : 0.0123068       : 0.00477242      : 0.0198442       : 24   : 37.9832
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38891e+08     : 25   : 2.45382e+08     : 3.69483e+06     : 2.51912e+08     : 21   : 2.59224
+  SCIMemoryMaxUsed  [MBytes ] : 2.38891e+08     : 25   : 2.45382e+08     : 3.69483e+06     : 2.51912e+08     : 21   : 2.59224
+  MemoryUsed        [MBytes ] : 8.32684e+08     : 2    : 8.68338e+08     : 1.82753e+07     : 8.97466e+08     : 21   : 3.2456
+  MemoryResident    [MBytes ] : 2.38891e+08     : 25   : 2.45382e+08     : 3.69483e+06     : 2.51912e+08     : 21   : 2.59224
+  Percentage of time spent in overhead : 0.72168
+Solve of pressure on level 0 completed in 0.0610787 s (solve only: 0.0592199 s, mean: 0.0681083 s, 9 iterations, residual = 3.02831e-09).
+Timestep 26      Time=0.0026399   Next delT=0.000122612 Wall Time=4.83582   EMA=0.153669    Memory Used=245.54 MBs (avg) 251.91 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 26 at time=0.0026399
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113363        : 0    : 0.119483        : 0.00347086      : 0.124685        : 11   : 4.17171
+  TaskLocalComm     [seconds] : 0.00796908      : 0    : 0.0119387       : 0.00242404      : 0.0163556       : 13   : 27.0052
+  TaskWaitCommTime  [seconds] : 0.00493181      : 11   : 0.0128007       : 0.00483334      : 0.0206764       : 0    : 38.0905
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39428e+08     : 25   : 2.45536e+08     : 3.69896e+06     : 2.51912e+08     : 21   : 2.53096
+  SCIMemoryMaxUsed  [MBytes ] : 2.39428e+08     : 25   : 2.45536e+08     : 3.69896e+06     : 2.51912e+08     : 21   : 2.53096
+  MemoryUsed        [MBytes ] : 8.32684e+08     : 2    : 8.68539e+08     : 1.84179e+07     : 8.97466e+08     : 21   : 3.22324
+  MemoryResident    [MBytes ] : 2.39428e+08     : 25   : 2.45536e+08     : 3.69896e+06     : 2.51912e+08     : 21   : 2.53096
+  Percentage of time spent in overhead : 0.677266
+Solve of pressure on level 0 completed in 0.0819497 s (solve only: 0.0800987 s, mean: 0.0702884 s, 9 iterations, residual = 3.08061e-09).
+Timestep 27      Time=0.00276251  Next delT=0.000122478 Wall Time=5.00909   EMA=0.157233    Memory Used=245.42 MBs (avg) 251.67 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 27 at time=0.00276251
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.130918        : 0    : 0.138572        : 0.00558423      : 0.156524        : 27   : 11.4696
+  TaskLocalComm     [seconds] : 0.00770416      : 0    : 0.012004        : 0.00269914      : 0.0175036       : 27   : 31.42
+  TaskWaitCommTime  [seconds] : 0.00603198      : 27   : 0.0272818       : 0.00682909      : 0.0368004       : 0    : 25.8656
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39428e+08     : 25   : 2.45423e+08     : 3.71457e+06     : 2.51666e+08     : 13   : 2.48069
+  SCIMemoryMaxUsed  [MBytes ] : 2.39428e+08     : 25   : 2.45423e+08     : 3.71457e+06     : 2.51666e+08     : 13   : 2.48069
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68346e+08     : 1.84177e+07     : 8.95922e+08     : 20   : 3.07795
+  MemoryResident    [MBytes ] : 2.39428e+08     : 25   : 2.45423e+08     : 3.71457e+06     : 2.51666e+08     : 13   : 2.48069
+  Percentage of time spent in overhead : 0.634431
+Solve of pressure on level 0 completed in 0.0813748 s (solve only: 0.0795773 s, mean: 0.0719773 s, 9 iterations, residual = 3.13415e-09).
+Timestep 28      Time=0.00288499  Next delT=0.000122437 Wall Time=5.17075   EMA=0.158038    Memory Used=245.50 MBs (avg) 251.77 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 28 at time=0.00288499
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.13538         : 0    : 0.141772        : 0.00340999      : 0.14713         : 21   : 3.64198
+  TaskLocalComm     [seconds] : 0.00832978      : 0    : 0.0120494       : 0.00237236      : 0.0162878       : 13   : 26.0219
+  TaskWaitCommTime  [seconds] : 0.00480475      : 21   : 0.0126633       : 0.00477159      : 0.0207566       : 0    : 38.9916
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39608e+08     : 31   : 2.45497e+08     : 3.57304e+06     : 2.51773e+08     : 21   : 2.49286
+  SCIMemoryMaxUsed  [MBytes ] : 2.39608e+08     : 31   : 2.45497e+08     : 3.57304e+06     : 2.51773e+08     : 21   : 2.49286
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68415e+08     : 1.81891e+07     : 8.97126e+08     : 21   : 3.20039
+  MemoryResident    [MBytes ] : 2.39608e+08     : 31   : 2.45497e+08     : 3.57304e+06     : 2.51773e+08     : 21   : 2.49286
+  Percentage of time spent in overhead : 0.592871
+Solve of pressure on level 0 completed in 0.0759262 s (solve only: 0.0740617 s, mean: 0.0723563 s, 9 iterations, residual = 3.1888e-09).
+Timestep 29      Time=0.00300742  Next delT=0.000122483 Wall Time=5.34025   EMA=0.160121    Memory Used=245.45 MBs (avg) 252.04 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 29 at time=0.00300742
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.126866        : 0    : 0.133518        : 0.00471167      : 0.149361        : 19   : 10.6074
+  TaskLocalComm     [seconds] : 0.0081401       : 0    : 0.0120956       : 0.00299821      : 0.0218555       : 19   : 44.6563
+  TaskWaitCommTime  [seconds] : 0.00759766      : 19   : 0.0287629       : 0.00634429      : 0.0372768       : 0    : 22.8397
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38793e+08     : 30   : 2.45453e+08     : 3.70352e+06     : 2.52043e+08     : 21   : 2.61461
+  SCIMemoryMaxUsed  [MBytes ] : 2.38793e+08     : 30   : 2.45453e+08     : 3.70352e+06     : 2.52043e+08     : 21   : 2.61461
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68328e+08     : 1.83593e+07     : 8.9745e+08      : 21   : 3.24496
+  MemoryResident    [MBytes ] : 2.38793e+08     : 30   : 2.45453e+08     : 3.70352e+06     : 2.52043e+08     : 21   : 2.61461
+  Percentage of time spent in overhead : 0.552308
+Solve of pressure on level 0 completed in 0.0609149 s (solve only: 0.0590254 s, mean: 0.0699325 s, 9 iterations, residual = 3.2444e-09).
+Timestep 30      Time=0.0031299   Next delT=0.000122611 Wall Time=5.47954   EMA=0.156335    Memory Used=245.58 MBs (avg) 252.04 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 30 at time=0.0031299
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112882        : 0    : 0.119333        : 0.0034804       : 0.124635        : 19   : 4.25372
+  TaskLocalComm     [seconds] : 0.00796439      : 0    : 0.0119438       : 0.00244086      : 0.0162244       : 11   : 26.3834
+  TaskWaitCommTime  [seconds] : 0.0048632       : 19   : 0.0127956       : 0.00482591      : 0.0209883       : 0    : 39.0345
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39059e+08     : 30   : 2.45585e+08     : 3.7068e+06      : 2.52043e+08     : 21   : 2.5624
+  SCIMemoryMaxUsed  [MBytes ] : 2.39059e+08     : 30   : 2.45585e+08     : 3.7068e+06      : 2.52043e+08     : 21   : 2.5624
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68502e+08     : 1.82267e+07     : 8.9745e+08      : 21   : 3.22554
+  MemoryResident    [MBytes ] : 2.39059e+08     : 30   : 2.45585e+08     : 3.7068e+06      : 2.52043e+08     : 21   : 2.5624
+  Percentage of time spent in overhead : 0.512487
+Solve of pressure on level 0 completed in 0.060892 s (solve only: 0.0590406 s, mean: 0.0679521 s, 9 iterations, residual = 3.30065e-09).
+Timestep 31      Time=0.00325252  Next delT=0.000122816 Wall Time=5.61876   EMA=0.153223    Memory Used=245.52 MBs (avg) 252.04 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 31 at time=0.00325252
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113103        : 0    : 0.119532        : 0.00343009      : 0.124482        : 21   : 3.9768
+  TaskLocalComm     [seconds] : 0.00793085      : 0    : 0.0119393       : 0.0024029       : 0.0163022       : 11   : 26.763
+  TaskWaitCommTime  [seconds] : 0.00503567      : 11   : 0.0125958       : 0.00480502      : 0.0207883       : 0    : 39.4089
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39133e+08     : 25   : 2.4552e+08      : 3.66211e+06     : 2.52043e+08     : 21   : 2.58805
+  SCIMemoryMaxUsed  [MBytes ] : 2.39133e+08     : 25   : 2.4552e+08      : 3.66211e+06     : 2.52043e+08     : 21   : 2.58805
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68386e+08     : 1.82928e+07     : 8.9745e+08      : 21   : 3.23849
+  MemoryResident    [MBytes ] : 2.39133e+08     : 25   : 2.4552e+08      : 3.66211e+06     : 2.52043e+08     : 21   : 2.58805
+  Percentage of time spent in overhead : 0.473169
+Solve of pressure on level 0 completed in 0.0837955 s (solve only: 0.0819811 s, mean: 0.0705029 s, 9 iterations, residual = 3.35721e-09).
+Timestep 32      Time=0.00337533  Next delT=0.000123095 Wall Time=5.78503   EMA=0.155594    Memory Used=245.63 MBs (avg) 252.04 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 32 at time=0.00337533
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.137578        : 0    : 0.145192        : 0.00352515      : 0.151037        : 19   : 3.87
+  TaskLocalComm     [seconds] : 0.00787334      : 0    : 0.0119672       : 0.0024373       : 0.0162967       : 11   : 26.5665
+  TaskWaitCommTime  [seconds] : 0.00552603      : 19   : 0.0138938       : 0.00487508      : 0.0233349       : 0    : 40.4594
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39133e+08     : 25   : 2.45633e+08     : 3.6973e+06      : 2.52043e+08     : 21   : 2.54321
+  SCIMemoryMaxUsed  [MBytes ] : 2.39133e+08     : 25   : 2.45633e+08     : 3.6973e+06      : 2.52043e+08     : 21   : 2.54321
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68545e+08     : 1.82609e+07     : 8.9745e+08      : 21   : 3.22083
+  MemoryResident    [MBytes ] : 2.39133e+08     : 25   : 2.45633e+08     : 3.6973e+06      : 2.52043e+08     : 21   : 2.54321
+  Percentage of time spent in overhead : 0.434127
+Solve of pressure on level 0 completed in 0.0608378 s (solve only: 0.0589571 s, mean: 0.0684036 s, 9 iterations, residual = 3.41364e-09).
+Timestep 33      Time=0.00349843  Next delT=0.000123145 Wall Time=5.93641   EMA=0.154828    Memory Used=245.72 MBs (avg) 252.26 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 33 at time=0.00349843
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.111026        : 6    : 0.118864        : 0.0056589       : 0.135908        : 27   : 12.5405
+  TaskLocalComm     [seconds] : 0.0070209       : 0    : 0.0120191       : 0.00280094      : 0.0161911       : 27   : 25.7669
+  TaskWaitCommTime  [seconds] : 0.00601859      : 27   : 0.0252598       : 0.00700792      : 0.0350656       : 6    : 27.9643
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.396e+08       : 30   : 2.45718e+08     : 3.81115e+06     : 2.5226e+08      : 19   : 2.59343
+  SCIMemoryMaxUsed  [MBytes ] : 2.396e+08       : 30   : 2.45718e+08     : 3.81115e+06     : 2.5226e+08      : 19   : 2.59343
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.6858e+08      : 1.83797e+07     : 8.9745e+08      : 21   : 3.21684
+  MemoryResident    [MBytes ] : 2.396e+08       : 30   : 2.45718e+08     : 3.81115e+06     : 2.5226e+08      : 19   : 2.59343
+  Percentage of time spent in overhead : 0.395137
+Solve of pressure on level 0 completed in 0.0609161 s (solve only: 0.0590648 s, mean: 0.0667057 s, 9 iterations, residual = 3.46934e-09).
+Timestep 34      Time=0.00362157  Next delT=0.000123219 Wall Time=6.07543   EMA=0.151955    Memory Used=245.60 MBs (avg) 252.31 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 34 at time=0.00362157
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113217        : 0    : 0.119397        : 0.00338752      : 0.124494        : 21   : 4.094
+  TaskLocalComm     [seconds] : 0.00791855      : 0    : 0.0118328       : 0.00241072      : 0.0163756       : 19   : 27.7414
+  TaskWaitCommTime  [seconds] : 0.00485679      : 21   : 0.0125416       : 0.00476278      : 0.0204547       : 0    : 38.6858
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39194e+08     : 25   : 2.45604e+08     : 3.74051e+06     : 2.52314e+08     : 21   : 2.65904
+  SCIMemoryMaxUsed  [MBytes ] : 2.39194e+08     : 25   : 2.45604e+08     : 3.74051e+06     : 2.52314e+08     : 21   : 2.65904
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68442e+08     : 1.84322e+07     : 8.97642e+08     : 21   : 3.25304
+  MemoryResident    [MBytes ] : 2.39194e+08     : 25   : 2.45604e+08     : 3.74051e+06     : 2.52314e+08     : 21   : 2.65904
+  Percentage of time spent in overhead : 0.355979
+Solve of pressure on level 0 completed in 0.082022 s (solve only: 0.0801698 s, mean: 0.0691537 s, 9 iterations, residual = 3.52367e-09).
+Timestep 35      Time=0.00374479  Next delT=0.000123361 Wall Time=6.23828   EMA=0.153934    Memory Used=245.51 MBs (avg) 252.31 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 35 at time=0.00374479
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.135696        : 0    : 0.142045        : 0.00342982      : 0.147286        : 13   : 3.55803
+  TaskLocalComm     [seconds] : 0.00788092      : 0    : 0.0118457       : 0.0023716       : 0.0159889       : 13   : 25.9127
+  TaskWaitCommTime  [seconds] : 0.00560627      : 13   : 0.0134241       : 0.00480519      : 0.0215798       : 0    : 37.7932
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3946e+08      : 25   : 2.45512e+08     : 3.73731e+06     : 2.52314e+08     : 21   : 2.69567
+  SCIMemoryMaxUsed  [MBytes ] : 2.3946e+08      : 25   : 2.45512e+08     : 3.73731e+06     : 2.52314e+08     : 21   : 2.69567
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68355e+08     : 1.85032e+07     : 8.97642e+08     : 21   : 3.26268
+  MemoryResident    [MBytes ] : 2.3946e+08      : 25   : 2.45512e+08     : 3.73731e+06     : 2.52314e+08     : 21   : 2.69567
+  Percentage of time spent in overhead : 0.31643
+Solve of pressure on level 0 completed in 0.0862513 s (solve only: 0.0843802 s, mean: 0.0719221 s, 9 iterations, residual = 3.57604e-09).
+Timestep 36      Time=0.00386815  Next delT=0.000123565 Wall Time=6.4161    EMA=0.158278    Memory Used=245.45 MBs (avg) 252.31 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 36 at time=0.00386815
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.138087        : 0    : 0.14465         : 0.00468364      : 0.159443        : 27   : 9.27783
+  TaskLocalComm     [seconds] : 0.00797421      : 24   : 0.0119184       : 0.00268552      : 0.017553        : 21   : 32.1004
+  TaskWaitCommTime  [seconds] : 0.00870087      : 27   : 0.02594         : 0.00598189      : 0.0343022       : 0    : 24.378
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38887e+08     : 25   : 2.45455e+08     : 3.71681e+06     : 2.52314e+08     : 21   : 2.71839
+  SCIMemoryMaxUsed  [MBytes ] : 2.38887e+08     : 25   : 2.45455e+08     : 3.71681e+06     : 2.52314e+08     : 21   : 2.71839
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.6827e+08      : 1.85535e+07     : 8.97642e+08     : 21   : 3.27213
+  MemoryResident    [MBytes ] : 2.38887e+08     : 25   : 2.45455e+08     : 3.71681e+06     : 2.52314e+08     : 21   : 2.71839
+  Percentage of time spent in overhead : 0.276259
+Solve of pressure on level 0 completed in 0.0614366 s (solve only: 0.0595433 s, mean: 0.0696714 s, 9 iterations, residual = 3.62586e-09).
+Timestep 37      Time=0.00399172  Next delT=0.000123828 Wall Time=6.55573   EMA=0.154888    Memory Used=245.52 MBs (avg) 251.60 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 37 at time=0.00399172
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113134        : 0    : 0.11957         : 0.00341365      : 0.124641        : 19   : 4.06834
+  TaskLocalComm     [seconds] : 0.00786968      : 0    : 0.0117835       : 0.00237081      : 0.0159493       : 13   : 26.119
+  TaskWaitCommTime  [seconds] : 0.0052329       : 19   : 0.0127888       : 0.00477816      : 0.0209458       : 0    : 38.9432
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39153e+08     : 25   : 2.4552e+08      : 3.44318e+06     : 2.51605e+08     : 19   : 2.41842
+  SCIMemoryMaxUsed  [MBytes ] : 2.39153e+08     : 25   : 2.4552e+08      : 3.44318e+06     : 2.51605e+08     : 19   : 2.41842
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68349e+08     : 1.83017e+07     : 8.96328e+08     : 21   : 3.12144
+  MemoryResident    [MBytes ] : 2.39153e+08     : 25   : 2.4552e+08      : 3.44318e+06     : 2.51605e+08     : 19   : 2.41842
+  Percentage of time spent in overhead : 0.235224
+Solve of pressure on level 0 completed in 0.0839593 s (solve only: 0.0820834 s, mean: 0.0719282 s, 9 iterations, residual = 3.6726e-09).
+Timestep 38      Time=0.00411554  Next delT=0.000124146 Wall Time=6.72016   EMA=0.156623    Memory Used=245.39 MBs (avg) 251.60 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 38 at time=0.00411554
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.137859        : 0    : 0.143945        : 0.00348945      : 0.149583        : 11   : 3.76885
+  TaskLocalComm     [seconds] : 0.00737572      : 0    : 0.0117667       : 0.00242066      : 0.0162268       : 11   : 27.4857
+  TaskWaitCommTime  [seconds] : 0.0049458       : 11   : 0.0133397       : 0.00489674      : 0.0213246       : 6    : 37.4446
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39145e+08     : 30   : 2.45388e+08     : 3.4976e+06      : 2.51605e+08     : 19   : 2.47102
+  SCIMemoryMaxUsed  [MBytes ] : 2.39145e+08     : 30   : 2.45388e+08     : 3.4976e+06      : 2.51605e+08     : 19   : 2.47102
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68224e+08     : 1.83306e+07     : 8.96328e+08     : 21   : 3.13541
+  MemoryResident    [MBytes ] : 2.39145e+08     : 30   : 2.45388e+08     : 3.4976e+06      : 2.51605e+08     : 19   : 2.47102
+  Percentage of time spent in overhead : 0.193064
+Solve of pressure on level 0 completed in 0.0847811 s (solve only: 0.0828964 s, mean: 0.0739224 s, 9 iterations, residual = 3.71584e-09).
+Timestep 39      Time=0.00423969  Next delT=0.000124516 Wall Time=6.88687   EMA=0.158456    Memory Used=245.50 MBs (avg) 251.30 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 39 at time=0.00423969
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.139598        : 0    : 0.145664        : 0.00343564      : 0.151343        : 13   : 3.75276
+  TaskLocalComm     [seconds] : 0.00791484      : 6    : 0.0118214       : 0.00248554      : 0.0168516       : 11   : 29.85
+  TaskWaitCommTime  [seconds] : 0.00504855      : 13   : 0.0133437       : 0.0048479       : 0.0212675       : 6    : 37.2576
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39587e+08     : 30   : 2.45501e+08     : 3.45542e+06     : 2.51302e+08     : 13   : 2.30836
+  SCIMemoryMaxUsed  [MBytes ] : 2.39587e+08     : 30   : 2.45501e+08     : 3.45542e+06     : 2.51302e+08     : 13   : 2.30836
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68338e+08     : 1.8218e+07      : 8.96328e+08     : 21   : 3.12273
+  MemoryResident    [MBytes ] : 2.39587e+08     : 30   : 2.45501e+08     : 3.45542e+06     : 2.51302e+08     : 13   : 2.30836
+  Percentage of time spent in overhead : 0.149495
+Solve of pressure on level 0 completed in 0.0606994 s (solve only: 0.058809 s, mean: 0.0711745 s, 9 iterations, residual = 3.75534e-09).
+Timestep 40      Time=0.00436421  Next delT=0.000124933 Wall Time=7.04695   EMA=0.158751    Memory Used=245.50 MBs (avg) 251.27 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 40 at time=0.00436421
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.111139        : 6    : 0.118229        : 0.00599722      : 0.139762        : 11   : 15.4069
+  TaskLocalComm     [seconds] : 0.00750363      : 0    : 0.0119819       : 0.00323446      : 0.0230359       : 11   : 47.986
+  TaskWaitCommTime  [seconds] : 0.00700891      : 11   : 0.0344936       : 0.00769943      : 0.0437326       : 6    : 21.126
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39858e+08     : 30   : 2.45503e+08     : 3.56768e+06     : 2.51265e+08     : 21   : 2.29306
+  SCIMemoryMaxUsed  [MBytes ] : 2.39858e+08     : 30   : 2.45503e+08     : 3.56768e+06     : 2.51265e+08     : 21   : 2.29306
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.6834e+08      : 1.83752e+07     : 8.96664e+08     : 21   : 3.15877
+  MemoryResident    [MBytes ] : 2.39858e+08     : 30   : 2.45503e+08     : 3.56768e+06     : 2.51265e+08     : 21   : 2.29306
+  Percentage of time spent in overhead : 0.104203
+Solve of pressure on level 0 completed in 0.0827949 s (solve only: 0.0809289 s, mean: 0.072948 s, 9 iterations, residual = 3.79107e-09).
+Timestep 41      Time=0.00448914  Next delT=0.000125396 Wall Time=7.20998   EMA=0.15953     Memory Used=245.75 MBs (avg) 252.88 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 41 at time=0.00448914
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.136932        : 24   : 0.143013        : 0.00339188      : 0.148392        : 21   : 3.62501
+  TaskLocalComm     [seconds] : 0.0082156       : 0    : 0.0118107       : 0.00237397      : 0.0158839       : 11   : 25.6439
+  TaskWaitCommTime  [seconds] : 0.00497688      : 21   : 0.0129292       : 0.00478331      : 0.0207177       : 24   : 37.5934
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40042e+08     : 24   : 2.4575e+08      : 3.67337e+06     : 2.52879e+08     : 21   : 2.81897
+  SCIMemoryMaxUsed  [MBytes ] : 2.40042e+08     : 24   : 2.4575e+08      : 3.67337e+06     : 2.52879e+08     : 21   : 2.81897
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68613e+08     : 1.84195e+07     : 8.98253e+08     : 21   : 3.29973
+  MemoryResident    [MBytes ] : 2.40042e+08     : 24   : 2.4575e+08      : 3.67337e+06     : 2.52879e+08     : 21   : 2.81897
+  Percentage of time spent in overhead : 0.0568318
+Solve of pressure on level 0 completed in 0.0830377 s (solve only: 0.081164 s, mean: 0.0744418 s, 9 iterations, residual = 3.82325e-09).
+Timestep 42      Time=0.00461454  Next delT=0.0001259   Wall Time=7.3739    EMA=0.160327    Memory Used=245.72 MBs (avg) 252.51 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 42 at time=0.00461454
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.137667        : 6    : 0.143811        : 0.00346585      : 0.149076        : 13   : 3.53125
+  TaskLocalComm     [seconds] : 0.00785969      : 0    : 0.011893        : 0.00242887      : 0.016412        : 11   : 27.5349
+  TaskWaitCommTime  [seconds] : 0.00492899      : 11   : 0.0126791       : 0.00486326      : 0.0207387       : 6    : 38.8623
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40042e+08     : 24   : 2.45723e+08     : 3.6524e+06      : 2.52514e+08     : 13   : 2.68947
+  SCIMemoryMaxUsed  [MBytes ] : 2.40042e+08     : 24   : 2.45723e+08     : 3.6524e+06      : 2.52514e+08     : 13   : 2.68947
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68536e+08     : 1.83153e+07     : 8.96623e+08     : 21   : 3.13254
+  MemoryResident    [MBytes ] : 2.40042e+08     : 24   : 2.45723e+08     : 3.6524e+06      : 2.52514e+08     : 13   : 2.68947
+  Percentage of time spent in overhead : 0.0291444
+Solve of pressure on level 0 completed in 0.0608474 s (solve only: 0.0589878 s, mean: 0.071632 s, 9 iterations, residual = 3.85239e-09).
+Timestep 43      Time=0.00474044  Next delT=0.000126443 Wall Time=7.5137    EMA=0.156596    Memory Used=245.72 MBs (avg) 252.51 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 43 at time=0.00474044
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113557        : 0    : 0.119423        : 0.00340516      : 0.125103        : 19   : 4.54039
+  TaskLocalComm     [seconds] : 0.00797572      : 0    : 0.0117987       : 0.00243061      : 0.0164605       : 11   : 28.321
+  TaskWaitCommTime  [seconds] : 0.00503483      : 19   : 0.013253        : 0.0047857       : 0.020871        : 0    : 36.5003
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40042e+08     : 24   : 2.45721e+08     : 3.62909e+06     : 2.52514e+08     : 13   : 2.69018
+  SCIMemoryMaxUsed  [MBytes ] : 2.40042e+08     : 24   : 2.45721e+08     : 3.62909e+06     : 2.52514e+08     : 13   : 2.69018
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68544e+08     : 1.82998e+07     : 8.96958e+08     : 21   : 3.16787
+  MemoryResident    [MBytes ] : 2.40042e+08     : 24   : 2.45721e+08     : 3.62909e+06     : 2.52514e+08     : 13   : 2.69018
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0852204 s (solve only: 0.0834671 s, mean: 0.0737838 s, 9 iterations, residual = 3.87923e-09).
+Timestep 44      Time=0.00486688  Next delT=0.000127022 Wall Time=7.678     EMA=0.157995    Memory Used=245.80 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 44 at time=0.00486688
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.137353        : 6    : 0.143794        : 0.00333033      : 0.148877        : 15   : 3.41406
+  TaskLocalComm     [seconds] : 0.00827746      : 0    : 0.0118743       : 0.00230502      : 0.0156937       : 11   : 24.3371
+  TaskWaitCommTime  [seconds] : 0.00606065      : 19   : 0.0133086       : 0.00469329      : 0.021654        : 6    : 38.5395
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40042e+08     : 24   : 2.45796e+08     : 3.83312e+06     : 2.52563e+08     : 19   : 2.67932
+  SCIMemoryMaxUsed  [MBytes ] : 2.40042e+08     : 24   : 2.45796e+08     : 3.83312e+06     : 2.52563e+08     : 19   : 2.67932
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68635e+08     : 1.84163e+07     : 8.97282e+08     : 21   : 3.19266
+  MemoryResident    [MBytes ] : 2.40042e+08     : 24   : 2.45796e+08     : 3.83312e+06     : 2.52563e+08     : 19   : 2.67932
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607536 s (solve only: 0.0588822 s, mean: 0.0710745 s, 9 iterations, residual = 3.90463e-09).
+Timestep 45      Time=0.0049939   Next delT=0.000127634 Wall Time=7.81679   EMA=0.154504    Memory Used=245.85 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 45 at time=0.0049939
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.114083        : 24   : 0.119728        : 0.00316507      : 0.124059        : 13   : 3.49135
+  TaskLocalComm     [seconds] : 0.00787317      : 0    : 0.0118184       : 0.0023321       : 0.0159782       : 11   : 26.034
+  TaskWaitCommTime  [seconds] : 0.00487336      : 21   : 0.0118569       : 0.00455984      : 0.0192251       : 0    : 38.3257
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40001e+08     : 31   : 2.45849e+08     : 3.68205e+06     : 2.52563e+08     : 19   : 2.65839
+  SCIMemoryMaxUsed  [MBytes ] : 2.40001e+08     : 31   : 2.45849e+08     : 3.68205e+06     : 2.52563e+08     : 19   : 2.65839
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68652e+08     : 1.83121e+07     : 8.97282e+08     : 21   : 3.19072
+  MemoryResident    [MBytes ] : 2.40001e+08     : 31   : 2.45849e+08     : 3.68205e+06     : 2.52563e+08     : 19   : 2.65839
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.081437 s (solve only: 0.0796218 s, mean: 0.0726285 s, 9 iterations, residual = 3.92942e-09).
+Timestep 46      Time=0.00512153  Next delT=0.000128277 Wall Time=7.98191   EMA=0.156434    Memory Used=245.81 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 46 at time=0.00512153
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.133506        : 6    : 0.139681        : 0.0036899       : 0.147856        : 27   : 5.52896
+  TaskLocalComm     [seconds] : 0.00813218      : 0    : 0.0117339       : 0.00240044      : 0.0159581       : 13   : 26.4707
+  TaskWaitCommTime  [seconds] : 0.00937007      : 27   : 0.0182633       : 0.0050265       : 0.0264995       : 6    : 31.0806
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.37896e+08     : 30   : 2.4581e+08      : 3.99211e+06     : 2.52563e+08     : 19   : 2.67395
+  SCIMemoryMaxUsed  [MBytes ] : 2.37896e+08     : 30   : 2.4581e+08      : 3.99211e+06     : 2.52563e+08     : 19   : 2.67395
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68629e+08     : 1.82452e+07     : 8.97282e+08     : 21   : 3.19333
+  MemoryResident    [MBytes ] : 2.37896e+08     : 30   : 2.4581e+08      : 3.99211e+06     : 2.52563e+08     : 19   : 2.67395
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0611192 s (solve only: 0.0592701 s, mean: 0.0701997 s, 9 iterations, residual = 3.9542e-09).
+Timestep 47      Time=0.00524981  Next delT=0.000128948 Wall Time=8.12088   EMA=0.153259    Memory Used=245.86 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 47 at time=0.00524981
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113622        : 24   : 0.119412        : 0.00321945      : 0.124207        : 13   : 3.85977
+  TaskLocalComm     [seconds] : 0.00828164      : 6    : 0.0117804       : 0.00232738      : 0.0161025       : 13   : 26.8414
+  TaskWaitCommTime  [seconds] : 0.00493124      : 13   : 0.0123439       : 0.00460179      : 0.0198636       : 24   : 37.8566
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39784e+08     : 30   : 2.45855e+08     : 3.76575e+06     : 2.52563e+08     : 19   : 2.65595
+  SCIMemoryMaxUsed  [MBytes ] : 2.39784e+08     : 30   : 2.45855e+08     : 3.76575e+06     : 2.52563e+08     : 19   : 2.65595
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68665e+08     : 1.85062e+07     : 8.97602e+08     : 21   : 3.22374
+  MemoryResident    [MBytes ] : 2.39784e+08     : 30   : 2.45855e+08     : 3.76575e+06     : 2.52563e+08     : 19   : 2.65595
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608659 s (solve only: 0.0590239 s, mean: 0.0681677 s, 9 iterations, residual = 3.97917e-09).
+Timestep 48      Time=0.00537876  Next delT=0.000129645 Wall Time=8.26017   EMA=0.150718    Memory Used=245.82 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 48 at time=0.00537876
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113496        : 24   : 0.119031        : 0.00340181      : 0.124256        : 11   : 4.20519
+  TaskLocalComm     [seconds] : 0.0084812       : 0    : 0.0117786       : 0.00243437      : 0.0164437       : 11   : 28.3701
+  TaskWaitCommTime  [seconds] : 0.00520275      : 11   : 0.0131393       : 0.0048099       : 0.0204198       : 24   : 35.6543
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38625e+08     : 25   : 2.45815e+08     : 4.01706e+06     : 2.52563e+08     : 19   : 2.67187
+  SCIMemoryMaxUsed  [MBytes ] : 2.38625e+08     : 25   : 2.45815e+08     : 4.01706e+06     : 2.52563e+08     : 19   : 2.67187
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68603e+08     : 1.84242e+07     : 8.97602e+08     : 21   : 3.23064
+  MemoryResident    [MBytes ] : 2.38625e+08     : 25   : 2.45815e+08     : 4.01706e+06     : 2.52563e+08     : 19   : 2.67187
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0713785 s (solve only: 0.0694808 s, mean: 0.0684065 s, 9 iterations, residual = 4.00407e-09).
+Timestep 49      Time=0.00550841  Next delT=0.000130229 Wall Time=8.42182   EMA=0.152706    Memory Used=245.93 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 49 at time=0.00550841
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.121244        : 24   : 0.127957        : 0.00529111      : 0.145303        : 27   : 11.9381
+  TaskLocalComm     [seconds] : 0.0076248       : 0    : 0.0116914       : 0.00268355      : 0.0168545       : 27   : 30.6335
+  TaskWaitCommTime  [seconds] : 0.00637397      : 27   : 0.0262994       : 0.00646745      : 0.0350657       : 24   : 24.9998
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39428e+08     : 25   : 2.45931e+08     : 3.81466e+06     : 2.52563e+08     : 19   : 2.626
+  SCIMemoryMaxUsed  [MBytes ] : 2.39428e+08     : 25   : 2.45931e+08     : 3.81466e+06     : 2.52563e+08     : 19   : 2.626
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68741e+08     : 1.83485e+07     : 8.97602e+08     : 21   : 3.2153
+  MemoryResident    [MBytes ] : 2.39428e+08     : 25   : 2.45931e+08     : 3.81466e+06     : 2.52563e+08     : 19   : 2.626
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0611439 s (solve only: 0.0592888 s, mean: 0.0667487 s, 9 iterations, residual = 4.02822e-09).
+Timestep 50      Time=0.00563863  Next delT=0.000130738 Wall Time=8.56136   EMA=0.150313    Memory Used=245.83 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 50 at time=0.00563863
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113209        : 6    : 0.119283        : 0.00336032      : 0.124633        : 11   : 4.29289
+  TaskLocalComm     [seconds] : 0.00773261      : 0    : 0.0117144       : 0.00241789      : 0.015933        : 11   : 26.4773
+  TaskWaitCommTime  [seconds] : 0.00502077      : 11   : 0.0131271       : 0.00474941      : 0.0210823       : 6    : 37.7342
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39698e+08     : 25   : 2.45835e+08     : 3.74185e+06     : 2.52563e+08     : 19   : 2.66416
+  SCIMemoryMaxUsed  [MBytes ] : 2.39698e+08     : 25   : 2.45835e+08     : 3.74185e+06     : 2.52563e+08     : 19   : 2.66416
+  MemoryUsed        [MBytes ] : 8.31894e+08     : 2    : 8.68592e+08     : 1.84277e+07     : 8.97602e+08     : 21   : 3.23188
+  MemoryResident    [MBytes ] : 2.39698e+08     : 25   : 2.45835e+08     : 3.74185e+06     : 2.52563e+08     : 19   : 2.66416
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0727164 s (solve only: 0.0708502 s, mean: 0.0674945 s, 9 iterations, residual = 4.05072e-09).
+Timestep 51      Time=0.00576937  Next delT=0.000131278 Wall Time=8.71811   EMA=0.151483    Memory Used=245.84 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 51 at time=0.00576937
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.124309        : 0    : 0.130972        : 0.00431077      : 0.141857        : 25   : 7.67325
+  TaskLocalComm     [seconds] : 0.00807481      : 0    : 0.0117337       : 0.00235541      : 0.0162152       : 11   : 27.6377
+  TaskWaitCommTime  [seconds] : 0.00857925      : 25   : 0.0185672       : 0.00525765      : 0.0270041       : 0    : 31.243
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39194e+08     : 30   : 2.45836e+08     : 3.74808e+06     : 2.52563e+08     : 19   : 2.66366
+  SCIMemoryMaxUsed  [MBytes ] : 2.39194e+08     : 30   : 2.45836e+08     : 3.74808e+06     : 2.52563e+08     : 19   : 2.66366
+  MemoryUsed        [MBytes ] : 8.32209e+08     : 2    : 8.68619e+08     : 1.84279e+07     : 8.97602e+08     : 21   : 3.22886
+  MemoryResident    [MBytes ] : 2.39194e+08     : 30   : 2.45836e+08     : 3.74808e+06     : 2.52563e+08     : 19   : 2.66366
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609194 s (solve only: 0.0590326 s, mean: 0.0659559 s, 9 iterations, residual = 4.07065e-09).
+Timestep 52      Time=0.00590065  Next delT=0.000131849 Wall Time=8.8579    EMA=0.149358    Memory Used=245.69 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 52 at time=0.00590065
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113759        : 0    : 0.119526        : 0.00341955      : 0.124885        : 13   : 4.29119
+  TaskLocalComm     [seconds] : 0.00819247      : 0    : 0.0118002       : 0.00247841      : 0.01618         : 11   : 27.0693
+  TaskWaitCommTime  [seconds] : 0.00490205      : 11   : 0.0129388       : 0.00484196      : 0.0205431       : 0    : 37.0164
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39698e+08     : 25   : 2.4569e+08      : 3.63947e+06     : 2.52563e+08     : 19   : 2.72158
+  SCIMemoryMaxUsed  [MBytes ] : 2.39698e+08     : 25   : 2.4569e+08      : 3.63947e+06     : 2.52563e+08     : 19   : 2.72158
+  MemoryUsed        [MBytes ] : 8.32209e+08     : 2    : 8.68456e+08     : 1.83137e+07     : 8.97602e+08     : 21   : 3.24705
+  MemoryResident    [MBytes ] : 2.39698e+08     : 25   : 2.4569e+08      : 3.63947e+06     : 2.52563e+08     : 19   : 2.72158
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608504 s (solve only: 0.0590211 s, mean: 0.0646951 s, 9 iterations, residual = 4.08726e-09).
+Timestep 53      Time=0.0060325   Next delT=0.000132448 Wall Time=8.99742   EMA=0.147569    Memory Used=245.98 MBs (avg) 252.56 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 53 at time=0.0060325
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113215        : 30   : 0.119283        : 0.00346057      : 0.124331        : 11   : 4.06066
+  TaskLocalComm     [seconds] : 0.0082122       : 0    : 0.01177         : 0.00235604      : 0.01599         : 11   : 26.3915
+  TaskWaitCommTime  [seconds] : 0.00518782      : 11   : 0.0130337       : 0.0048476       : 0.0209765       : 6    : 37.8652
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39698e+08     : 25   : 2.45981e+08     : 3.67623e+06     : 2.52563e+08     : 19   : 2.60613
+  SCIMemoryMaxUsed  [MBytes ] : 2.39698e+08     : 25   : 2.45981e+08     : 3.67623e+06     : 2.52563e+08     : 19   : 2.60613
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68775e+08     : 1.84272e+07     : 8.97602e+08     : 21   : 3.21156
+  MemoryResident    [MBytes ] : 2.39698e+08     : 25   : 2.45981e+08     : 3.67623e+06     : 2.52563e+08     : 19   : 2.60613
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0827772 s (solve only: 0.0809136 s, mean: 0.0676439 s, 9 iterations, residual = 4.10006e-09).
+Timestep 54      Time=0.00616495  Next delT=0.000133074 Wall Time=9.16577   EMA=0.151347    Memory Used=245.85 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 54 at time=0.00616495
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.135181        : 30   : 0.141789        : 0.00396681      : 0.15094         : 27   : 6.06303
+  TaskLocalComm     [seconds] : 0.00806923      : 0    : 0.0117507       : 0.00244023      : 0.0162097       : 19   : 27.5083
+  TaskWaitCommTime  [seconds] : 0.00879463      : 27   : 0.019401        : 0.00523359      : 0.0278213       : 24   : 30.2656
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39698e+08     : 25   : 2.45849e+08     : 3.69743e+06     : 2.52674e+08     : 21   : 2.70119
+  SCIMemoryMaxUsed  [MBytes ] : 2.39698e+08     : 25   : 2.45849e+08     : 3.69743e+06     : 2.52674e+08     : 21   : 2.70119
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68585e+08     : 1.84361e+07     : 8.97896e+08     : 21   : 3.26442
+  MemoryResident    [MBytes ] : 2.39698e+08     : 25   : 2.45849e+08     : 3.69743e+06     : 2.52674e+08     : 21   : 2.70119
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0722172 s (solve only: 0.070362 s, mean: 0.0681381 s, 9 iterations, residual = 4.10882e-09).
+Timestep 55      Time=0.00629802  Next delT=0.000133727 Wall Time=9.33415   EMA=0.154444    Memory Used=246.01 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 55 at time=0.00629802
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.122163        : 30   : 0.12938         : 0.00639479      : 0.151691        : 27   : 14.7078
+  TaskLocalComm     [seconds] : 0.00753124      : 0    : 0.0117785       : 0.00281073      : 0.0187061       : 27   : 37.0339
+  TaskWaitCommTime  [seconds] : 0.00585146      : 27   : 0.03175         : 0.00765553      : 0.0408832       : 30   : 22.3397
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39968e+08     : 25   : 2.46015e+08     : 3.62609e+06     : 2.52674e+08     : 21   : 2.63549
+  SCIMemoryMaxUsed  [MBytes ] : 2.39968e+08     : 25   : 2.46015e+08     : 3.62609e+06     : 2.52674e+08     : 21   : 2.63549
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68787e+08     : 1.83922e+07     : 8.97896e+08     : 21   : 3.24198
+  MemoryResident    [MBytes ] : 2.39968e+08     : 25   : 2.46015e+08     : 3.62609e+06     : 2.52674e+08     : 21   : 2.63549
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608268 s (solve only: 0.0589826 s, mean: 0.0664735 s, 9 iterations, residual = 4.1136e-09).
+Timestep 56      Time=0.00643175  Next delT=0.000134404 Wall Time=9.47363   EMA=0.151724    Memory Used=245.95 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 56 at time=0.00643175
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113181        : 30   : 0.119182        : 0.00348638      : 0.124814        : 13   : 4.51208
+  TaskLocalComm     [seconds] : 0.00792246      : 0    : 0.0116832       : 0.00242632      : 0.0164032       : 11   : 28.7749
+  TaskWaitCommTime  [seconds] : 0.00496967      : 13   : 0.0132117       : 0.00487361      : 0.0208478       : 24   : 36.6279
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39591e+08     : 25   : 2.45951e+08     : 3.63919e+06     : 2.52674e+08     : 21   : 2.66092
+  SCIMemoryMaxUsed  [MBytes ] : 2.39591e+08     : 25   : 2.45951e+08     : 3.63919e+06     : 2.52674e+08     : 21   : 2.66092
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68696e+08     : 1.83801e+07     : 8.97896e+08     : 21   : 3.25209
+  MemoryResident    [MBytes ] : 2.39591e+08     : 25   : 2.45951e+08     : 3.63919e+06     : 2.52674e+08     : 21   : 2.66092
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0610638 s (solve only: 0.0592398 s, mean: 0.0651582 s, 9 iterations, residual = 4.11467e-09).
+Timestep 57      Time=0.00656615  Next delT=0.000135106 Wall Time=9.61318   EMA=0.14951     Memory Used=246.08 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 57 at time=0.00656615
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112658        : 24   : 0.11881         : 0.00350984      : 0.124547        : 13   : 4.60621
+  TaskLocalComm     [seconds] : 0.00739022      : 0    : 0.0116497       : 0.00244465      : 0.0162102       : 13   : 28.1333
+  TaskWaitCommTime  [seconds] : 0.00536921      : 13   : 0.0136761       : 0.00488774      : 0.0215635       : 24   : 36.5778
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39858e+08     : 25   : 2.46085e+08     : 3.72989e+06     : 2.52674e+08     : 21   : 2.60773
+  SCIMemoryMaxUsed  [MBytes ] : 2.39858e+08     : 25   : 2.46085e+08     : 3.72989e+06     : 2.52674e+08     : 21   : 2.60773
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68854e+08     : 1.83829e+07     : 8.97896e+08     : 21   : 3.23448
+  MemoryResident    [MBytes ] : 2.39858e+08     : 25   : 2.46085e+08     : 3.72989e+06     : 2.52674e+08     : 21   : 2.60773
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607905 s (solve only: 0.0589588 s, mean: 0.0640311 s, 9 iterations, residual = 4.11245e-09).
+Timestep 58      Time=0.00670126  Next delT=0.00013583  Wall Time=9.75204   EMA=0.147574    Memory Used=245.89 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 58 at time=0.00670126
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113413        : 0    : 0.119011        : 0.00336932      : 0.124184        : 13   : 4.16529
+  TaskLocalComm     [seconds] : 0.00769095      : 0    : 0.0116658       : 0.00242824      : 0.016339        : 11   : 28.6015
+  TaskWaitCommTime  [seconds] : 0.00492705      : 11   : 0.0127099       : 0.00477079      : 0.0202          : 0    : 37.0795
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3801e+08      : 25   : 2.45886e+08     : 3.8752e+06      : 2.52674e+08     : 21   : 2.6866
+  SCIMemoryMaxUsed  [MBytes ] : 2.3801e+08      : 25   : 2.45886e+08     : 3.8752e+06      : 2.52674e+08     : 21   : 2.6866
+  MemoryUsed        [MBytes ] : 8.33466e+08     : 2    : 8.68605e+08     : 1.84603e+07     : 8.97896e+08     : 21   : 3.26222
+  MemoryResident    [MBytes ] : 2.3801e+08      : 25   : 2.45886e+08     : 3.8752e+06      : 2.52674e+08     : 21   : 2.6866
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607498 s (solve only: 0.0589158 s, mean: 0.063101 s, 9 iterations, residual = 4.10749e-09).
+Timestep 59      Time=0.00683709  Next delT=0.000136577 Wall Time=9.89116   EMA=0.146037    Memory Used=246.02 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 59 at time=0.00683709
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112736        : 0    : 0.118903        : 0.00341019      : 0.124001        : 13   : 4.11148
+  TaskLocalComm     [seconds] : 0.00746509      : 0    : 0.0115801       : 0.00240681      : 0.0161619       : 11   : 28.3497
+  TaskWaitCommTime  [seconds] : 0.00550759      : 11   : 0.01313         : 0.00479256      : 0.0211198       : 0    : 37.8309
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39849e+08     : 30   : 2.46022e+08     : 3.81351e+06     : 2.52674e+08     : 21   : 2.6326
+  SCIMemoryMaxUsed  [MBytes ] : 2.39849e+08     : 30   : 2.46022e+08     : 3.81351e+06     : 2.52674e+08     : 21   : 2.6326
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68765e+08     : 1.84141e+07     : 8.97896e+08     : 21   : 3.24445
+  MemoryResident    [MBytes ] : 2.39849e+08     : 30   : 2.46022e+08     : 3.81351e+06     : 2.52674e+08     : 21   : 2.6326
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607744 s (solve only: 0.0588875 s, mean: 0.0623349 s, 9 iterations, residual = 4.1004e-09).
+Timestep 60      Time=0.00697367  Next delT=0.000137346 Wall Time=10.03     EMA=0.144728    Memory Used=245.83 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 60 at time=0.00697367
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113516        : 6    : 0.119294        : 0.00336066      : 0.124289        : 19   : 4.01874
+  TaskLocalComm     [seconds] : 0.00775466      : 0    : 0.0116476       : 0.0024348       : 0.0160939       : 21   : 27.6277
+  TaskWaitCommTime  [seconds] : 0.00481044      : 21   : 0.0124674       : 0.00476402      : 0.0201313       : 6    : 38.0694
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39849e+08     : 30   : 2.45832e+08     : 3.70949e+06     : 2.52674e+08     : 21   : 2.70788
+  SCIMemoryMaxUsed  [MBytes ] : 2.39849e+08     : 30   : 2.45832e+08     : 3.70949e+06     : 2.52674e+08     : 21   : 2.70788
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68544e+08     : 1.84477e+07     : 8.97896e+08     : 21   : 3.26902
+  MemoryResident    [MBytes ] : 2.39849e+08     : 30   : 2.45832e+08     : 3.70949e+06     : 2.52674e+08     : 21   : 2.70788
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608932 s (solve only: 0.0590469 s, mean: 0.0617371 s, 9 iterations, residual = 4.09181e-09).
+Timestep 61      Time=0.00711101  Next delT=0.000137694 Wall Time=10.1691   EMA=0.143704    Memory Used=246.00 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 61 at time=0.00711101
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112744        : 0    : 0.118986        : 0.00346474      : 0.124439        : 13   : 4.38178
+  TaskLocalComm     [seconds] : 0.00761219      : 0    : 0.0116535       : 0.0024467       : 0.0159619       : 11   : 26.9921
+  TaskWaitCommTime  [seconds] : 0.00493816      : 13   : 0.0129915       : 0.00485699      : 0.0210438       : 0    : 38.2644
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39772e+08     : 1    : 2.45999e+08     : 3.90562e+06     : 2.52674e+08     : 21   : 2.64167
+  SCIMemoryMaxUsed  [MBytes ] : 2.39772e+08     : 1    : 2.45999e+08     : 3.90562e+06     : 2.52674e+08     : 21   : 2.64167
+  MemoryUsed        [MBytes ] : 8.32209e+08     : 2    : 8.68731e+08     : 1.85053e+07     : 8.97896e+08     : 21   : 3.24815
+  MemoryResident    [MBytes ] : 2.39772e+08     : 1    : 2.45999e+08     : 3.90562e+06     : 2.52674e+08     : 21   : 2.64167
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0789725 s (solve only: 0.0771122 s, mean: 0.0645326 s, 9 iterations, residual = 4.08237e-09).
+Timestep 62      Time=0.00724871  Next delT=0.000137364 Wall Time=10.3327   EMA=0.147326    Memory Used=245.93 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 62 at time=0.00724871
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.129798        : 24   : 0.136134        : 0.00408701      : 0.146457        : 27   : 7.04877
+  TaskLocalComm     [seconds] : 0.00799684      : 0    : 0.011788        : 0.0025588       : 0.0157892       : 13   : 25.3417
+  TaskWaitCommTime  [seconds] : 0.00893026      : 27   : 0.020294        : 0.00541047      : 0.028531        : 24   : 28.8704
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40042e+08     : 24   : 2.45929e+08     : 3.79307e+06     : 2.52674e+08     : 21   : 2.66963
+  SCIMemoryMaxUsed  [MBytes ] : 2.40042e+08     : 24   : 2.45929e+08     : 3.79307e+06     : 2.52674e+08     : 21   : 2.66963
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68642e+08     : 1.85574e+07     : 8.97896e+08     : 21   : 3.25809
+  MemoryResident    [MBytes ] : 2.40042e+08     : 24   : 2.45929e+08     : 3.79307e+06     : 2.52674e+08     : 21   : 2.66963
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0815961 s (solve only: 0.0797536 s, mean: 0.0673 s, 9 iterations, residual = 4.07274e-09).
+Timestep 63      Time=0.00738607  Next delT=0.00013707  Wall Time=10.4948   EMA=0.150011    Memory Used=246.10 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 63 at time=0.00738607
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.135214        : 24   : 0.141469        : 0.00352158      : 0.146653        : 13   : 3.53456
+  TaskLocalComm     [seconds] : 0.0074003       : 0    : 0.0117068       : 0.00246497      : 0.0163401       : 11   : 28.3554
+  TaskWaitCommTime  [seconds] : 0.00555666      : 11   : 0.0135039       : 0.00489349      : 0.0215497       : 0    : 37.336
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39837e+08     : 7    : 2.46095e+08     : 3.90204e+06     : 2.52674e+08     : 21   : 2.60358
+  SCIMemoryMaxUsed  [MBytes ] : 2.39837e+08     : 7    : 2.46095e+08     : 3.90204e+06     : 2.52674e+08     : 21   : 2.60358
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68807e+08     : 1.85826e+07     : 8.97896e+08     : 21   : 3.2397
+  MemoryResident    [MBytes ] : 2.39837e+08     : 7    : 2.46095e+08     : 3.90204e+06     : 2.52674e+08     : 21   : 2.60358
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0611134 s (solve only: 0.0592161 s, mean: 0.0658302 s, 9 iterations, residual = 4.06349e-09).
+Timestep 64      Time=0.00752314  Next delT=0.000136808 Wall Time=10.634    EMA=0.148037    Memory Used=246.08 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 64 at time=0.00752314
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113289        : 6    : 0.119287        : 0.0032839       : 0.124358        : 13   : 4.0778
+  TaskLocalComm     [seconds] : 0.00819767      : 0    : 0.0117332       : 0.00242344      : 0.0160778       : 13   : 27.0225
+  TaskWaitCommTime  [seconds] : 0.00510339      : 11   : 0.0127349       : 0.00465618      : 0.0206398       : 6    : 38.2992
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40108e+08     : 24   : 2.46083e+08     : 3.71694e+06     : 2.52674e+08     : 21   : 2.60834
+  SCIMemoryMaxUsed  [MBytes ] : 2.40108e+08     : 24   : 2.46083e+08     : 3.71694e+06     : 2.52674e+08     : 21   : 2.60834
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68796e+08     : 1.84851e+07     : 8.97896e+08     : 21   : 3.24098
+  MemoryResident    [MBytes ] : 2.40108e+08     : 24   : 2.46083e+08     : 3.71694e+06     : 2.52674e+08     : 21   : 2.60834
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609444 s (solve only: 0.0591482 s, mean: 0.0646153 s, 9 iterations, residual = 4.05507e-09).
+Timestep 65      Time=0.00765995  Next delT=0.000136573 Wall Time=10.7731   EMA=0.146411    Memory Used=246.15 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 65 at time=0.00765995
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11278         : 0    : 0.118849        : 0.00339999      : 0.1242          : 13   : 4.30891
+  TaskLocalComm     [seconds] : 0.0075216       : 0    : 0.0115485       : 0.00241087      : 0.0160826       : 19   : 28.1927
+  TaskWaitCommTime  [seconds] : 0.00534791      : 13   : 0.0131225       : 0.00479728      : 0.0210581       : 0    : 37.6843
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40058e+08     : 31   : 2.46153e+08     : 3.75519e+06     : 2.52674e+08     : 21   : 2.58068
+  SCIMemoryMaxUsed  [MBytes ] : 2.40058e+08     : 31   : 2.46153e+08     : 3.75519e+06     : 2.52674e+08     : 21   : 2.58068
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68849e+08     : 1.84831e+07     : 8.97896e+08     : 21   : 3.23501
+  MemoryResident    [MBytes ] : 2.40058e+08     : 31   : 2.46153e+08     : 3.75519e+06     : 2.52674e+08     : 21   : 2.58068
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0846246 s (solve only: 0.0827826 s, mean: 0.0679184 s, 9 iterations, residual = 4.04784e-09).
+Timestep 66      Time=0.00779652  Next delT=0.000136361 Wall Time=10.9383   EMA=0.149826    Memory Used=246.07 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 66 at time=0.00779652
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.138481        : 0    : 0.144665        : 0.00347913      : 0.150252        : 11   : 3.71832
+  TaskLocalComm     [seconds] : 0.00737495      : 0    : 0.011642        : 0.00248502      : 0.0166819       : 11   : 30.2117
+  TaskWaitCommTime  [seconds] : 0.0049724       : 11   : 0.0133693       : 0.00487872      : 0.0214417       : 0    : 37.6482
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3962e+08      : 25   : 2.46073e+08     : 3.88496e+06     : 2.52674e+08     : 21   : 2.61229
+  SCIMemoryMaxUsed  [MBytes ] : 2.3962e+08      : 25   : 2.46073e+08     : 3.88496e+06     : 2.52674e+08     : 21   : 2.61229
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68764e+08     : 1.85192e+07     : 8.97896e+08     : 21   : 3.24449
+  MemoryResident    [MBytes ] : 2.3962e+08      : 25   : 2.46073e+08     : 3.88496e+06     : 2.52674e+08     : 21   : 2.61229
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0612398 s (solve only: 0.0593369 s, mean: 0.0663582 s, 9 iterations, residual = 4.04202e-09).
+Timestep 67      Time=0.00793288  Next delT=0.000136168 Wall Time=11.0774   EMA=0.147891    Memory Used=245.99 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 67 at time=0.00793288
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.114136        : 0    : 0.11958         : 0.00330705      : 0.124554        : 13   : 3.99345
+  TaskLocalComm     [seconds] : 0.00800051      : 6    : 0.0116952       : 0.00239342      : 0.0160964       : 13   : 27.3429
+  TaskWaitCommTime  [seconds] : 0.00484517      : 11   : 0.0124382       : 0.00468466      : 0.0197585       : 6    : 37.0487
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3962e+08      : 25   : 2.45987e+08     : 3.84238e+06     : 2.52674e+08     : 21   : 2.64638
+  SCIMemoryMaxUsed  [MBytes ] : 2.3962e+08      : 25   : 2.45987e+08     : 3.84238e+06     : 2.52674e+08     : 21   : 2.64638
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68692e+08     : 1.84093e+07     : 8.97896e+08     : 21   : 3.25252
+  MemoryResident    [MBytes ] : 2.3962e+08      : 25   : 2.45987e+08     : 3.84238e+06     : 2.52674e+08     : 21   : 2.64638
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0836016 s (solve only: 0.081758 s, mean: 0.0691582 s, 9 iterations, residual = 4.03773e-09).
+Timestep 68      Time=0.00806905  Next delT=0.000135991 Wall Time=11.241    EMA=0.150741    Memory Used=246.06 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 68 at time=0.00806905
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.137495        : 6    : 0.143663        : 0.00341018      : 0.148876        : 13   : 3.50155
+  TaskLocalComm     [seconds] : 0.00770432      : 0    : 0.0116835       : 0.00239097      : 0.0162051       : 11   : 27.9026
+  TaskWaitCommTime  [seconds] : 0.00499838      : 11   : 0.0127174       : 0.00479105      : 0.0208544       : 6    : 39.0183
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3962e+08      : 25   : 2.46063e+08     : 3.76201e+06     : 2.52674e+08     : 21   : 2.61654
+  SCIMemoryMaxUsed  [MBytes ] : 2.3962e+08      : 25   : 2.46063e+08     : 3.76201e+06     : 2.52674e+08     : 21   : 2.61654
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68743e+08     : 1.83624e+07     : 8.97896e+08     : 21   : 3.24691
+  MemoryResident    [MBytes ] : 2.3962e+08      : 25   : 2.46063e+08     : 3.76201e+06     : 2.52674e+08     : 21   : 2.61654
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0847321 s (solve only: 0.0829228 s, mean: 0.0716608 s, 9 iterations, residual = 4.03497e-09).
+Timestep 69      Time=0.00820504  Next delT=0.000135827 Wall Time=11.4271   EMA=0.157161    Memory Used=245.71 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 69 at time=0.00820504
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.136293        : 0    : 0.144234        : 0.00725734      : 0.168484        : 5    : 14.3931
+  TaskLocalComm     [seconds] : 0.00737479      : 6    : 0.0118212       : 0.00314121      : 0.018926        : 5    : 37.5402
+  TaskWaitCommTime  [seconds] : 0.00628518      : 5    : 0.034325        : 0.0087773       : 0.0441471       : 0    : 22.2486
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3772e+08      : 25   : 2.45714e+08     : 4.063e+06       : 2.52674e+08     : 21   : 2.75464
+  SCIMemoryMaxUsed  [MBytes ] : 2.3772e+08      : 25   : 2.45714e+08     : 4.063e+06       : 2.52674e+08     : 21   : 2.75464
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68346e+08     : 1.85956e+07     : 8.97896e+08     : 21   : 3.29108
+  MemoryResident    [MBytes ] : 2.3772e+08      : 25   : 2.45714e+08     : 4.063e+06       : 2.52674e+08     : 21   : 2.75464
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0642872 s (solve only: 0.0624228 s, mean: 0.0699812 s, 9 iterations, residual = 4.03362e-09).
+Timestep 70      Time=0.00834087  Next delT=0.000135671 Wall Time=11.5895   EMA=0.15812     Memory Used=246.00 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 70 at time=0.00834087
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113762        : 0    : 0.122579        : 0.00722347      : 0.146622        : 27   : 16.3979
+  TaskLocalComm     [seconds] : 0.00754716      : 6    : 0.0117942       : 0.00294915      : 0.0171722       : 5    : 31.3183
+  TaskWaitCommTime  [seconds] : 0.00535885      : 27   : 0.0323968       : 0.00863833      : 0.042987        : 0    : 24.6356
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.396e+08       : 25   : 2.45999e+08     : 3.62787e+06     : 2.52674e+08     : 21   : 2.64177
+  SCIMemoryMaxUsed  [MBytes ] : 2.396e+08       : 25   : 2.45999e+08     : 3.62787e+06     : 2.52674e+08     : 21   : 2.64177
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68707e+08     : 1.83894e+07     : 8.97896e+08     : 21   : 3.25082
+  MemoryResident    [MBytes ] : 2.396e+08       : 25   : 2.45999e+08     : 3.62787e+06     : 2.52674e+08     : 21   : 2.64177
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609107 s (solve only: 0.0590585 s, mean: 0.0679952 s, 9 iterations, residual = 4.03347e-09).
+Timestep 71      Time=0.00847654  Next delT=0.000135506 Wall Time=11.729    EMA=0.154729    Memory Used=245.89 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 71 at time=0.00847654
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11283         : 0    : 0.1189          : 0.0035522       : 0.124785        : 13   : 4.71554
+  TaskLocalComm     [seconds] : 0.00761489      : 6    : 0.0116786       : 0.00246329      : 0.0162343       : 13   : 28.0621
+  TaskWaitCommTime  [seconds] : 0.00495916      : 13   : 0.0134896       : 0.00493762      : 0.0213598       : 6    : 36.8458
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38367e+08     : 25   : 2.4589e+08      : 3.88849e+06     : 2.52674e+08     : 21   : 2.68508
+  SCIMemoryMaxUsed  [MBytes ] : 2.38367e+08     : 25   : 2.4589e+08      : 3.88849e+06     : 2.52674e+08     : 21   : 2.68508
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68586e+08     : 1.84744e+07     : 8.97896e+08     : 21   : 3.26429
+  MemoryResident    [MBytes ] : 2.38367e+08     : 25   : 2.4589e+08      : 3.88849e+06     : 2.52674e+08     : 21   : 2.68508
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0611661 s (solve only: 0.0593228 s, mean: 0.0664184 s, 9 iterations, residual = 4.03422e-09).
+Timestep 72      Time=0.00861204  Next delT=0.000135308 Wall Time=11.8681   EMA=0.151898    Memory Used=245.88 MBs (avg) 252.67 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 72 at time=0.00861204
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113576        : 6    : 0.119509        : 0.00329123      : 0.124452        : 21   : 3.97142
+  TaskLocalComm     [seconds] : 0.00779768      : 0    : 0.0116446       : 0.00245783      : 0.015988        : 11   : 27.1664
+  TaskWaitCommTime  [seconds] : 0.00485559      : 21   : 0.01252         : 0.00470995      : 0.0203596       : 6    : 38.5058
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.3944e+08      : 25   : 2.45878e+08     : 3.62922e+06     : 2.52674e+08     : 21   : 2.68949
+  SCIMemoryMaxUsed  [MBytes ] : 2.3944e+08      : 25   : 2.45878e+08     : 3.62922e+06     : 2.52674e+08     : 21   : 2.68949
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68553e+08     : 1.84601e+07     : 8.97896e+08     : 21   : 3.26803
+  MemoryResident    [MBytes ] : 2.3944e+08      : 25   : 2.45878e+08     : 3.62922e+06     : 2.52674e+08     : 21   : 2.68949
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0611322 s (solve only: 0.0592864 s, mean: 0.0651217 s, 9 iterations, residual = 4.03554e-09).
+Timestep 73      Time=0.00874735  Next delT=0.000135133 Wall Time=12.0077   EMA=0.149652    Memory Used=246.07 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 73 at time=0.00874735
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11301         : 0    : 0.11944         : 0.00345809      : 0.125105        : 13   : 4.52764
+  TaskLocalComm     [seconds] : 0.00760856      : 0    : 0.0116254       : 0.00242737      : 0.016066        : 11   : 27.6396
+  TaskWaitCommTime  [seconds] : 0.00487361      : 13   : 0.013044        : 0.00485617      : 0.0212841       : 0    : 38.7146
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38039e+08     : 25   : 2.46067e+08     : 3.84067e+06     : 2.52944e+08     : 21   : 2.7188
+  SCIMemoryMaxUsed  [MBytes ] : 2.38039e+08     : 25   : 2.46067e+08     : 3.84067e+06     : 2.52944e+08     : 21   : 2.7188
+  MemoryUsed        [MBytes ] : 8.31578e+08     : 2    : 8.68742e+08     : 1.84977e+07     : 8.98232e+08     : 21   : 3.28315
+  MemoryResident    [MBytes ] : 2.38039e+08     : 25   : 2.46067e+08     : 3.84067e+06     : 2.52944e+08     : 21   : 2.7188
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609339 s (solve only: 0.0590502 s, mean: 0.0640178 s, 9 iterations, residual = 4.03709e-09).
+Timestep 74      Time=0.00888249  Next delT=0.000134978 Wall Time=12.1469   EMA=0.147761    Memory Used=246.01 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 74 at time=0.00888249
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113259        : 30   : 0.119121        : 0.00336402      : 0.124506        : 19   : 4.3251
+  TaskLocalComm     [seconds] : 0.0079867       : 0    : 0.011679        : 0.0024138       : 0.0160728       : 19   : 27.3367
+  TaskWaitCommTime  [seconds] : 0.00490057      : 19   : 0.0129687       : 0.00475021      : 0.0204735       : 0    : 36.6561
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39383e+08     : 25   : 2.46008e+08     : 3.65422e+06     : 2.52944e+08     : 21   : 2.74213
+  SCIMemoryMaxUsed  [MBytes ] : 2.39383e+08     : 25   : 2.46008e+08     : 3.65422e+06     : 2.52944e+08     : 21   : 2.74213
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68667e+08     : 1.8537e+07      : 8.98232e+08     : 21   : 3.29149
+  MemoryResident    [MBytes ] : 2.39383e+08     : 25   : 2.46008e+08     : 3.65422e+06     : 2.52944e+08     : 21   : 2.74213
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0610115 s (solve only: 0.0591705 s, mean: 0.0631365 s, 9 iterations, residual = 4.03856e-09).
+Timestep 75      Time=0.00901746  Next delT=0.000134839 Wall Time=12.2862   EMA=0.146228    Memory Used=246.01 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 75 at time=0.00901746
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112715        : 0    : 0.119154        : 0.00351359      : 0.124264        : 19   : 4.11246
+  TaskLocalComm     [seconds] : 0.00757896      : 0    : 0.0116449       : 0.00237032      : 0.0158731       : 13   : 26.6374
+  TaskWaitCommTime  [seconds] : 0.00546491      : 19   : 0.013048        : 0.00486744      : 0.0212989       : 0    : 38.7385
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38682e+08     : 25   : 2.46006e+08     : 3.81209e+06     : 2.52944e+08     : 21   : 2.74324
+  SCIMemoryMaxUsed  [MBytes ] : 2.38682e+08     : 25   : 2.46006e+08     : 3.81209e+06     : 2.52944e+08     : 21   : 2.74324
+  MemoryUsed        [MBytes ] : 8.31578e+08     : 2    : 8.68714e+08     : 1.85982e+07     : 8.98232e+08     : 21   : 3.28627
+  MemoryResident    [MBytes ] : 2.38682e+08     : 25   : 2.46006e+08     : 3.81209e+06     : 2.52944e+08     : 21   : 2.74324
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607344 s (solve only: 0.0589004 s, mean: 0.0623663 s, 9 iterations, residual = 4.03968e-09).
+Timestep 76      Time=0.0091523   Next delT=0.000134714 Wall Time=12.4252   EMA=0.144912    Memory Used=245.99 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 76 at time=0.0091523
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113044        : 0    : 0.119067        : 0.00336525      : 0.124287        : 21   : 4.1997
+  TaskLocalComm     [seconds] : 0.00775126      : 0    : 0.0116673       : 0.00240303      : 0.0163102       : 11   : 28.4661
+  TaskWaitCommTime  [seconds] : 0.00490356      : 11   : 0.012692        : 0.00475791      : 0.020575        : 0    : 38.3134
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38948e+08     : 25   : 2.45989e+08     : 3.78711e+06     : 2.52944e+08     : 21   : 2.74972
+  SCIMemoryMaxUsed  [MBytes ] : 2.38948e+08     : 25   : 2.45989e+08     : 3.78711e+06     : 2.52944e+08     : 21   : 2.74972
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68655e+08     : 1.86012e+07     : 8.98232e+08     : 21   : 3.29282
+  MemoryResident    [MBytes ] : 2.38948e+08     : 25   : 2.45989e+08     : 3.78711e+06     : 2.52944e+08     : 21   : 2.74972
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0822886 s (solve only: 0.0804315 s, mean: 0.0656508 s, 9 iterations, residual = 4.04024e-09).
+Timestep 77      Time=0.00928702  Next delT=0.000134597 Wall Time=12.5877   EMA=0.148106    Memory Used=246.15 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 77 at time=0.00928702
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.135976        : 24   : 0.14204         : 0.00343306      : 0.147411        : 19   : 3.64346
+  TaskLocalComm     [seconds] : 0.00748699      : 0    : 0.0116776       : 0.00238624      : 0.0160745       : 11   : 27.3534
+  TaskWaitCommTime  [seconds] : 0.0054688       : 11   : 0.0132655       : 0.00482589      : 0.0210083       : 24   : 36.856
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39755e+08     : 25   : 2.46147e+08     : 3.75691e+06     : 2.52944e+08     : 21   : 2.68722
+  SCIMemoryMaxUsed  [MBytes ] : 2.39755e+08     : 25   : 2.46147e+08     : 3.75691e+06     : 2.52944e+08     : 21   : 2.68722
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68802e+08     : 1.83999e+07     : 8.98232e+08     : 21   : 3.27648
+  MemoryResident    [MBytes ] : 2.39755e+08     : 25   : 2.46147e+08     : 3.75691e+06     : 2.52944e+08     : 21   : 2.68722
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.060707 s (solve only: 0.0588559 s, mean: 0.0644154 s, 9 iterations, residual = 4.04012e-09).
+Timestep 78      Time=0.00942161  Next delT=0.000134419 Wall Time=12.7267   EMA=0.146454    Memory Used=245.96 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 78 at time=0.00942161
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112713        : 0    : 0.118519        : 0.00341237      : 0.123669        : 21   : 4.16427
+  TaskLocalComm     [seconds] : 0.0075833       : 0    : 0.0116016       : 0.00244523      : 0.0160202       : 21   : 27.5815
+  TaskWaitCommTime  [seconds] : 0.00552724      : 21   : 0.0132861       : 0.00483638      : 0.0209659       : 0    : 36.6299
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39755e+08     : 25   : 2.45955e+08     : 3.74062e+06     : 2.52944e+08     : 21   : 2.76308
+  SCIMemoryMaxUsed  [MBytes ] : 2.39755e+08     : 25   : 2.45955e+08     : 3.74062e+06     : 2.52944e+08     : 21   : 2.76308
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68603e+08     : 1.85365e+07     : 8.98232e+08     : 21   : 3.29858
+  MemoryResident    [MBytes ] : 2.39755e+08     : 25   : 2.45955e+08     : 3.74062e+06     : 2.52944e+08     : 21   : 2.76308
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.060884 s (solve only: 0.0590116 s, mean: 0.0634329 s, 9 iterations, residual = 4.03927e-09).
+Timestep 79      Time=0.00955603  Next delT=0.000134229 Wall Time=12.8658   EMA=0.145115    Memory Used=246.16 MBs (avg) 252.94 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 79 at time=0.00955603
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11301         : 0    : 0.118975        : 0.00337546      : 0.124448        : 19   : 4.39782
+  TaskLocalComm     [seconds] : 0.00749779      : 0    : 0.011543        : 0.00238492      : 0.015762        : 19   : 26.7666
+  TaskWaitCommTime  [seconds] : 0.00502566      : 19   : 0.0130491       : 0.00477489      : 0.020867        : 0    : 37.4657
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39755e+08     : 25   : 2.46156e+08     : 3.72913e+06     : 2.52944e+08     : 21   : 2.68378
+  SCIMemoryMaxUsed  [MBytes ] : 2.39755e+08     : 25   : 2.46156e+08     : 3.72913e+06     : 2.52944e+08     : 21   : 2.68378
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68833e+08     : 1.8493e+07      : 8.98232e+08     : 21   : 3.27302
+  MemoryResident    [MBytes ] : 2.39755e+08     : 25   : 2.46156e+08     : 3.72913e+06     : 2.52944e+08     : 21   : 2.68378
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607408 s (solve only: 0.0588576 s, mean: 0.062601 s, 9 iterations, residual = 4.0377e-09).
+Timestep 80      Time=0.00969026  Next delT=0.000134028 Wall Time=13.0047   EMA=0.143979    Memory Used=245.95 MBs (avg) 253.21 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 80 at time=0.00969026
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113178        : 6    : 0.118976        : 0.00333958      : 0.124079        : 11   : 4.1127
+  TaskLocalComm     [seconds] : 0.00763807      : 0    : 0.0115967       : 0.00239759      : 0.015889        : 11   : 27.0143
+  TaskWaitCommTime  [seconds] : 0.0048477       : 11   : 0.0128045       : 0.00475804      : 0.020594        : 6    : 37.8242
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39411e+08     : 30   : 2.45955e+08     : 3.73758e+06     : 2.53215e+08     : 21   : 2.86714
+  SCIMemoryMaxUsed  [MBytes ] : 2.39411e+08     : 30   : 2.45955e+08     : 3.73758e+06     : 2.53215e+08     : 21   : 2.86714
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68551e+08     : 1.842e+07       : 8.98232e+08     : 21   : 3.30442
+  MemoryResident    [MBytes ] : 2.39411e+08     : 30   : 2.45955e+08     : 3.73758e+06     : 2.53215e+08     : 21   : 2.86714
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0610317 s (solve only: 0.0591728 s, mean: 0.0619777 s, 9 iterations, residual = 4.03547e-09).
+Timestep 81      Time=0.00982429  Next delT=0.000133813 Wall Time=13.1444   EMA=0.1432      Memory Used=246.25 MBs (avg) 253.21 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 81 at time=0.00982429
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113012        : 0    : 0.119506        : 0.00350709      : 0.125097        : 19   : 4.46925
+  TaskLocalComm     [seconds] : 0.00788989      : 0    : 0.0116844       : 0.00244523      : 0.0160661       : 11   : 27.2726
+  TaskWaitCommTime  [seconds] : 0.00491923      : 19   : 0.0130731       : 0.00491275      : 0.0213731       : 0    : 38.8339
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39755e+08     : 25   : 2.46253e+08     : 3.79217e+06     : 2.53215e+08     : 21   : 2.74921
+  SCIMemoryMaxUsed  [MBytes ] : 2.39755e+08     : 25   : 2.46253e+08     : 3.79217e+06     : 2.53215e+08     : 21   : 2.74921
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68931e+08     : 1.84803e+07     : 8.98232e+08     : 21   : 3.26213
+  MemoryResident    [MBytes ] : 2.39755e+08     : 25   : 2.46253e+08     : 3.79217e+06     : 2.53215e+08     : 21   : 2.74921
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608041 s (solve only: 0.0589751 s, mean: 0.0614318 s, 9 iterations, residual = 4.03269e-09).
+Timestep 82      Time=0.0099581   Next delT=0.000133586 Wall Time=13.2833   EMA=0.142417    Memory Used=246.10 MBs (avg) 253.21 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 82 at time=0.0099581
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113044        : 0    : 0.119063        : 0.00346302      : 0.124224        : 19   : 4.15423
+  TaskLocalComm     [seconds] : 0.00757528      : 0    : 0.0116558       : 0.00244332      : 0.0159394       : 11   : 26.8739
+  TaskWaitCommTime  [seconds] : 0.0049098       : 11   : 0.012667        : 0.00485168      : 0.020508        : 0    : 38.2337
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39976e+08     : 31   : 2.461e+08       : 3.83996e+06     : 2.53215e+08     : 21   : 2.80972
+  SCIMemoryMaxUsed  [MBytes ] : 2.39976e+08     : 31   : 2.461e+08       : 3.83996e+06     : 2.53215e+08     : 21   : 2.80972
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68726e+08     : 1.85451e+07     : 8.98232e+08     : 21   : 3.28494
+  MemoryResident    [MBytes ] : 2.39976e+08     : 31   : 2.461e+08       : 3.83996e+06     : 2.53215e+08     : 21   : 2.80972
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608456 s (solve only: 0.0589816 s, mean: 0.0609863 s, 9 iterations, residual = 4.02951e-09).
+Timestep 83      Time=0.0100917   Next delT=0.000133345 Wall Time=13.4219   EMA=0.141733    Memory Used=246.22 MBs (avg) 253.21 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 83 at time=0.0100917
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113208        : 0    : 0.119165        : 0.00333246      : 0.123982        : 13   : 3.88531
+  TaskLocalComm     [seconds] : 0.00756886      : 0    : 0.0116483       : 0.00239239      : 0.0160616       : 21   : 27.4773
+  TaskWaitCommTime  [seconds] : 0.00492941      : 13   : 0.0122826       : 0.00472564      : 0.020064        : 0    : 38.7827
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40026e+08     : 25   : 2.46218e+08     : 3.8256e+06      : 2.53215e+08     : 21   : 2.76311
+  SCIMemoryMaxUsed  [MBytes ] : 2.40026e+08     : 25   : 2.46218e+08     : 3.8256e+06      : 2.53215e+08     : 21   : 2.76311
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68871e+08     : 1.84868e+07     : 8.98232e+08     : 21   : 3.2688
+  MemoryResident    [MBytes ] : 2.40026e+08     : 25   : 2.46218e+08     : 3.8256e+06      : 2.53215e+08     : 21   : 2.76311
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609541 s (solve only: 0.0590762 s, mean: 0.060639 s, 9 iterations, residual = 4.02606e-09).
+Timestep 84      Time=0.010225    Next delT=0.000133091 Wall Time=13.5609   EMA=0.141236    Memory Used=246.18 MBs (avg) 253.21 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 84 at time=0.010225
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113334        : 0    : 0.119123        : 0.00330081      : 0.124402        : 19   : 4.24385
+  TaskLocalComm     [seconds] : 0.00802873      : 0    : 0.0115789       : 0.00238876      : 0.0159779       : 11   : 27.5317
+  TaskWaitCommTime  [seconds] : 0.00488319      : 19   : 0.0127732       : 0.00470339      : 0.0203174       : 0    : 37.1319
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39985e+08     : 31   : 2.46181e+08     : 3.82504e+06     : 2.53215e+08     : 21   : 2.77767
+  SCIMemoryMaxUsed  [MBytes ] : 2.39985e+08     : 31   : 2.46181e+08     : 3.82504e+06     : 2.53215e+08     : 21   : 2.77767
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68815e+08     : 1.84042e+07     : 8.98232e+08     : 21   : 3.275
+  MemoryResident    [MBytes ] : 2.39985e+08     : 31   : 2.46181e+08     : 3.82504e+06     : 2.53215e+08     : 21   : 2.77767
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608606 s (solve only: 0.0590179 s, mean: 0.0603442 s, 9 iterations, residual = 4.02247e-09).
+Timestep 85      Time=0.0103581   Next delT=0.000132825 Wall Time=13.6996   EMA=0.14076     Memory Used=246.17 MBs (avg) 253.21 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 85 at time=0.0103581
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112786        : 24   : 0.118835        : 0.00339895      : 0.124007        : 13   : 4.1707
+  TaskLocalComm     [seconds] : 0.00743993      : 0    : 0.0116205       : 0.00240875      : 0.0162093       : 11   : 28.3099
+  TaskWaitCommTime  [seconds] : 0.00486917      : 11   : 0.0126845       : 0.00477499      : 0.020444        : 24   : 37.9551
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39985e+08     : 25   : 2.46168e+08     : 3.74287e+06     : 2.53215e+08     : 21   : 2.78288
+  SCIMemoryMaxUsed  [MBytes ] : 2.39985e+08     : 25   : 2.46168e+08     : 3.74287e+06     : 2.53215e+08     : 21   : 2.78288
+  MemoryUsed        [MBytes ] : 8.32209e+08     : 2    : 8.68779e+08     : 1.84989e+07     : 8.98232e+08     : 21   : 3.27899
+  MemoryResident    [MBytes ] : 2.39985e+08     : 25   : 2.46168e+08     : 3.74287e+06     : 2.53215e+08     : 21   : 2.78288
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0612022 s (solve only: 0.0593555 s, mean: 0.0601645 s, 9 iterations, residual = 4.01885e-09).
+Timestep 86      Time=0.010491    Next delT=0.000132547 Wall Time=13.8388   EMA=0.140486    Memory Used=246.09 MBs (avg) 252.54 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 86 at time=0.010491
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113484        : 0    : 0.119336        : 0.00339383      : 0.124649        : 19   : 4.26218
+  TaskLocalComm     [seconds] : 0.00767776      : 0    : 0.0115705       : 0.00241507      : 0.0158129       : 21   : 26.8288
+  TaskWaitCommTime  [seconds] : 0.00483777      : 19   : 0.0127982       : 0.00480481      : 0.0204739       : 0    : 37.4901
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38465e+08     : 30   : 2.46092e+08     : 3.96103e+06     : 2.52543e+08     : 13   : 2.55445
+  SCIMemoryMaxUsed  [MBytes ] : 2.38465e+08     : 30   : 2.46092e+08     : 3.96103e+06     : 2.52543e+08     : 13   : 2.55445
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68731e+08     : 1.85107e+07     : 8.96983e+08     : 21   : 3.14964
+  MemoryResident    [MBytes ] : 2.38465e+08     : 30   : 2.46092e+08     : 3.96103e+06     : 2.52543e+08     : 13   : 2.55445
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608887 s (solve only: 0.0590198 s, mean: 0.0599564 s, 9 iterations, residual = 4.01526e-09).
+Timestep 87      Time=0.0106235   Next delT=0.000132259 Wall Time=13.9776   EMA=0.140183    Memory Used=246.06 MBs (avg) 252.54 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 87 at time=0.0106235
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113563        : 24   : 0.119121        : 0.00327573      : 0.12421         : 13   : 4.09739
+  TaskLocalComm     [seconds] : 0.00763206      : 0    : 0.0116341       : 0.00240455      : 0.0162207       : 11   : 28.2766
+  TaskWaitCommTime  [seconds] : 0.00493952      : 11   : 0.0125507       : 0.00467956      : 0.0200094       : 0    : 37.2758
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.38395e+08     : 25   : 2.46059e+08     : 3.84774e+06     : 2.52543e+08     : 13   : 2.56762
+  SCIMemoryMaxUsed  [MBytes ] : 2.38395e+08     : 25   : 2.46059e+08     : 3.84774e+06     : 2.52543e+08     : 13   : 2.56762
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68675e+08     : 1.83739e+07     : 8.9763e+08      : 21   : 3.22577
+  MemoryResident    [MBytes ] : 2.38395e+08     : 25   : 2.46059e+08     : 3.84774e+06     : 2.52543e+08     : 13   : 2.56762
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609733 s (solve only: 0.0591275 s, mean: 0.0598057 s, 9 iterations, residual = 4.01173e-09).
+Timestep 88      Time=0.0107558   Next delT=0.000131961 Wall Time=14.1166   EMA=0.139965    Memory Used=246.24 MBs (avg) 252.54 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 88 at time=0.0107558
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.112927        : 30   : 0.119045        : 0.0034713       : 0.124376        : 19   : 4.28553
+  TaskLocalComm     [seconds] : 0.00773557      : 0    : 0.0115766       : 0.00240987      : 0.0159468       : 13   : 27.4047
+  TaskWaitCommTime  [seconds] : 0.00504617      : 19   : 0.0128745       : 0.00483965      : 0.0205463       : 0    : 37.339
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39198e+08     : 25   : 2.46236e+08     : 3.85432e+06     : 2.52543e+08     : 13   : 2.49748
+  SCIMemoryMaxUsed  [MBytes ] : 2.39198e+08     : 25   : 2.46236e+08     : 3.85432e+06     : 2.52543e+08     : 13   : 2.49748
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.6888e+08      : 1.852e+07       : 8.9763e+08      : 21   : 3.20289
+  MemoryResident    [MBytes ] : 2.39198e+08     : 25   : 2.46236e+08     : 3.85432e+06     : 2.52543e+08     : 13   : 2.49748
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.060862 s (solve only: 0.0590036 s, mean: 0.0596598 s, 9 iterations, residual = 4.00822e-09).
+Timestep 89      Time=0.0108877   Next delT=0.000131656 Wall Time=14.2553   EMA=0.139733    Memory Used=246.10 MBs (avg) 252.54 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 89 at time=0.0108877
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11324         : 0    : 0.119236        : 0.00328825      : 0.124042        : 19   : 3.87409
+  TaskLocalComm     [seconds] : 0.00782578      : 0    : 0.011592        : 0.00234783      : 0.0157679       : 11   : 26.4834
+  TaskWaitCommTime  [seconds] : 0.00490449      : 19   : 0.0123511       : 0.00467572      : 0.0201176       : 0    : 38.6055
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39469e+08     : 25   : 2.46103e+08     : 3.86263e+06     : 2.52543e+08     : 13   : 2.54998
+  SCIMemoryMaxUsed  [MBytes ] : 2.39469e+08     : 25   : 2.46103e+08     : 3.86263e+06     : 2.52543e+08     : 13   : 2.54998
+  MemoryUsed        [MBytes ] : 8.32209e+08     : 2    : 8.68713e+08     : 1.86351e+07     : 8.9763e+08      : 21   : 3.22145
+  MemoryResident    [MBytes ] : 2.39469e+08     : 25   : 2.46103e+08     : 3.86263e+06     : 2.52543e+08     : 13   : 2.54998
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608334 s (solve only: 0.0589793 s, mean: 0.0595361 s, 9 iterations, residual = 4.00466e-09).
+Timestep 90      Time=0.0110194   Next delT=0.000131345 Wall Time=14.3941   EMA=0.139559    Memory Used=246.29 MBs (avg) 253.14 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 90 at time=0.0110194
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11309         : 0    : 0.119191        : 0.00333323      : 0.124325        : 19   : 4.12937
+  TaskLocalComm     [seconds] : 0.007833        : 0    : 0.011632        : 0.00239752      : 0.0158849       : 11   : 26.773
+  TaskWaitCommTime  [seconds] : 0.00483811      : 19   : 0.0124658       : 0.00469935      : 0.0203137       : 0    : 38.6335
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39047e+08     : 25   : 2.46289e+08     : 3.81847e+06     : 2.53141e+08     : 19   : 2.70698
+  SCIMemoryMaxUsed  [MBytes ] : 2.39047e+08     : 25   : 2.46289e+08     : 3.81847e+06     : 2.53141e+08     : 19   : 2.70698
+  MemoryUsed        [MBytes ] : 8.3252e+08      : 2    : 8.68942e+08     : 1.8394e+07      : 8.9763e+08      : 21   : 3.196
+  MemoryResident    [MBytes ] : 2.39047e+08     : 25   : 2.46289e+08     : 3.81847e+06     : 2.53141e+08     : 19   : 2.70698
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0610431 s (solve only: 0.0591818 s, mean: 0.0594717 s, 9 iterations, residual = 4.00093e-09).
+Timestep 91      Time=0.0111507   Next delT=0.00013103  Wall Time=14.5327   EMA=0.139386    Memory Used=246.29 MBs (avg) 253.41 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 91 at time=0.0111507
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113262        : 24   : 0.11906         : 0.00329224      : 0.123956        : 19   : 3.94974
+  TaskLocalComm     [seconds] : 0.00781349      : 0    : 0.0116249       : 0.00239263      : 0.015996        : 19   : 27.3264
+  TaskWaitCommTime  [seconds] : 0.00491728      : 11   : 0.0124702       : 0.00469057      : 0.0200922       : 24   : 37.9355
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39047e+08     : 25   : 2.46291e+08     : 3.90665e+06     : 2.53411e+08     : 19   : 2.80971
+  SCIMemoryMaxUsed  [MBytes ] : 2.39047e+08     : 25   : 2.46291e+08     : 3.90665e+06     : 2.53411e+08     : 19   : 2.80971
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68922e+08     : 1.84822e+07     : 8.9763e+08      : 21   : 3.19818
+  MemoryResident    [MBytes ] : 2.39047e+08     : 25   : 2.46291e+08     : 3.90665e+06     : 2.53411e+08     : 19   : 2.80971
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608585 s (solve only: 0.0589834 s, mean: 0.0593829 s, 9 iterations, residual = 3.9969e-09).
+Timestep 92      Time=0.0112817   Next delT=0.000130714 Wall Time=14.6712   EMA=0.139222    Memory Used=246.25 MBs (avg) 253.41 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 92 at time=0.0112817
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113079        : 24   : 0.119141        : 0.00330397      : 0.123837        : 21   : 3.79194
+  TaskLocalComm     [seconds] : 0.00803858      : 0    : 0.0116799       : 0.00230019      : 0.0157305       : 11   : 25.75
+  TaskWaitCommTime  [seconds] : 0.00484671      : 11   : 0.0122381       : 0.00467883      : 0.0199786       : 24   : 38.744
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39047e+08     : 25   : 2.46249e+08     : 3.96281e+06     : 2.53411e+08     : 19   : 2.82638
+  SCIMemoryMaxUsed  [MBytes ] : 2.39047e+08     : 25   : 2.46249e+08     : 3.96281e+06     : 2.53411e+08     : 19   : 2.82638
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68864e+08     : 1.84573e+07     : 8.9763e+08      : 21   : 3.2047
+  MemoryResident    [MBytes ] : 2.39047e+08     : 25   : 2.46249e+08     : 3.96281e+06     : 2.53411e+08     : 19   : 2.82638
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608347 s (solve only: 0.0589843 s, mean: 0.0593104 s, 9 iterations, residual = 3.99241e-09).
+Timestep 93      Time=0.0114125   Next delT=0.000130398 Wall Time=14.8098   EMA=0.139116    Memory Used=246.31 MBs (avg) 252.54 MBs (max on rank: 13    )
+Runtime Summary  summary stats for time step 93 at time=0.0114125
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113056        : 0    : 0.119128        : 0.0032973       : 0.124101        : 13   : 4.0069
+  TaskLocalComm     [seconds] : 0.00745272      : 0    : 0.0116092       : 0.0023761       : 0.0160837       : 11   : 27.8201
+  TaskWaitCommTime  [seconds] : 0.00485005      : 11   : 0.0123689       : 0.00468988      : 0.0203236       : 0    : 39.1401
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39047e+08     : 25   : 2.46309e+08     : 3.84311e+06     : 2.52543e+08     : 13   : 2.46854
+  SCIMemoryMaxUsed  [MBytes ] : 2.39047e+08     : 25   : 2.46309e+08     : 3.84311e+06     : 2.52543e+08     : 13   : 2.46854
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68963e+08     : 1.83808e+07     : 8.9763e+08      : 21   : 3.19362
+  MemoryResident    [MBytes ] : 2.39047e+08     : 25   : 2.46309e+08     : 3.84311e+06     : 2.52543e+08     : 13   : 2.46854
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.060893 s (solve only: 0.0589951 s, mean: 0.0592531 s, 9 iterations, residual = 3.98728e-09).
+Timestep 94      Time=0.0115429   Next delT=0.000130086 Wall Time=14.9485   EMA=0.139039    Memory Used=246.35 MBs (avg) 252.92 MBs (max on rank: 19    )
+Runtime Summary  summary stats for time step 94 at time=0.0115429
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113329        : 6    : 0.119142        : 0.00330596      : 0.124038        : 19   : 3.94744
+  TaskLocalComm     [seconds] : 0.00780714      : 0    : 0.0115545       : 0.00236109      : 0.015781        : 11   : 26.7823
+  TaskWaitCommTime  [seconds] : 0.00487932      : 19   : 0.0124538       : 0.00469649      : 0.0201082       : 6    : 38.0659
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39313e+08     : 25   : 2.46352e+08     : 3.84399e+06     : 2.52916e+08     : 19   : 2.59537
+  SCIMemoryMaxUsed  [MBytes ] : 2.39313e+08     : 25   : 2.46352e+08     : 3.84399e+06     : 2.52916e+08     : 19   : 2.59537
+  MemoryUsed        [MBytes ] : 8.33151e+08     : 2    : 8.68996e+08     : 1.8382e+07      : 8.9763e+08      : 21   : 3.18995
+  MemoryResident    [MBytes ] : 2.39313e+08     : 25   : 2.46352e+08     : 3.84399e+06     : 2.52916e+08     : 19   : 2.59537
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0607134 s (solve only: 0.0588821 s, mean: 0.0591856 s, 9 iterations, residual = 3.98133e-09).
+Timestep 95      Time=0.0116729   Next delT=0.00012978  Wall Time=15.0873   EMA=0.138993    Memory Used=246.25 MBs (avg) 252.92 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 95 at time=0.0116729
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113309        : 24   : 0.119132        : 0.00333489      : 0.124241        : 21   : 4.1124
+  TaskLocalComm     [seconds] : 0.0076606       : 0    : 0.0115777       : 0.00229364      : 0.0159083       : 11   : 27.2226
+  TaskWaitCommTime  [seconds] : 0.00488777      : 21   : 0.0125186       : 0.00469714      : 0.0201683       : 0    : 37.9295
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39067e+08     : 25   : 2.46254e+08     : 3.8178e+06      : 2.52924e+08     : 21   : 2.63714
+  SCIMemoryMaxUsed  [MBytes ] : 2.39067e+08     : 25   : 2.46254e+08     : 3.8178e+06      : 2.52924e+08     : 21   : 2.63714
+  MemoryUsed        [MBytes ] : 8.33466e+08     : 2    : 8.6887e+08      : 1.81902e+07     : 8.97962e+08     : 21   : 3.23982
+  MemoryResident    [MBytes ] : 2.39067e+08     : 25   : 2.46254e+08     : 3.8178e+06      : 2.52924e+08     : 21   : 2.63714
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0608951 s (solve only: 0.0590181 s, mean: 0.0591552 s, 9 iterations, residual = 3.97438e-09).
+Timestep 96      Time=0.0118027   Next delT=0.000129482 Wall Time=15.226    EMA=0.138946    Memory Used=246.13 MBs (avg) 252.92 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 96 at time=0.0118027
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.11315         : 0    : 0.118971        : 0.00329929      : 0.124259        : 13   : 4.25538
+  TaskLocalComm     [seconds] : 0.0078631       : 0    : 0.0115485       : 0.00233932      : 0.0158096       : 11   : 26.9528
+  TaskWaitCommTime  [seconds] : 0.0048574       : 13   : 0.0126676       : 0.00467743      : 0.0203181       : 0    : 37.6534
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39333e+08     : 25   : 2.46126e+08     : 3.77882e+06     : 2.52924e+08     : 21   : 2.68759
+  SCIMemoryMaxUsed  [MBytes ] : 2.39333e+08     : 25   : 2.46126e+08     : 3.77882e+06     : 2.52924e+08     : 21   : 2.68759
+  MemoryUsed        [MBytes ] : 8.33778e+08     : 2    : 8.68728e+08     : 1.82075e+07     : 8.97962e+08     : 21   : 3.25564
+  MemoryResident    [MBytes ] : 2.39333e+08     : 25   : 2.46126e+08     : 3.77882e+06     : 2.52924e+08     : 21   : 2.68759
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0610329 s (solve only: 0.059178 s, mean: 0.0591593 s, 9 iterations, residual = 3.96627e-09).
+Timestep 97      Time=0.0119322   Next delT=0.000129196 Wall Time=15.3653   EMA=0.139011    Memory Used=246.35 MBs (avg) 253.19 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 97 at time=0.0119322
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113149        : 0    : 0.119139        : 0.0033776       : 0.124229        : 21   : 4.09706
+  TaskLocalComm     [seconds] : 0.00774679      : 0    : 0.0115554       : 0.00238326      : 0.0157106       : 13   : 26.448
+  TaskWaitCommTime  [seconds] : 0.00546832      : 13   : 0.0130648       : 0.00476548      : 0.0208706       : 0    : 37.4012
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39075e+08     : 25   : 2.4635e+08      : 3.81858e+06     : 2.53194e+08     : 21   : 2.70303
+  SCIMemoryMaxUsed  [MBytes ] : 2.39075e+08     : 25   : 2.4635e+08      : 3.81858e+06     : 2.53194e+08     : 21   : 2.70303
+  MemoryUsed        [MBytes ] : 8.33778e+08     : 2    : 8.68985e+08     : 1.82352e+07     : 8.98269e+08     : 21   : 3.26009
+  MemoryResident    [MBytes ] : 2.39075e+08     : 25   : 2.4635e+08      : 3.81858e+06     : 2.53194e+08     : 21   : 2.70303
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0609047 s (solve only: 0.0590302 s, mean: 0.0591359 s, 9 iterations, residual = 3.95681e-09).
+Timestep 98      Time=0.0120614   Next delT=0.000128924 Wall Time=15.5037   EMA=0.13889     Memory Used=246.23 MBs (avg) 253.19 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 98 at time=0.0120614
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113494        : 0    : 0.119051        : 0.00328956      : 0.12385         : 21   : 3.87473
+  TaskLocalComm     [seconds] : 0.00798613      : 0    : 0.0116097       : 0.0023421       : 0.0157341       : 19   : 26.2135
+  TaskWaitCommTime  [seconds] : 0.00483143      : 11   : 0.0122048       : 0.00468934      : 0.0196479       : 6    : 37.8824
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40148e+08     : 25   : 2.46231e+08     : 3.72681e+06     : 2.53194e+08     : 21   : 2.74999
+  SCIMemoryMaxUsed  [MBytes ] : 2.40148e+08     : 25   : 2.46231e+08     : 3.72681e+06     : 2.53194e+08     : 21   : 2.74999
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68833e+08     : 1.84258e+07     : 8.98269e+08     : 21   : 3.27704
+  MemoryResident    [MBytes ] : 2.40148e+08     : 25   : 2.46231e+08     : 3.72681e+06     : 2.53194e+08     : 21   : 2.74999
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0611536 s (solve only: 0.0592658 s, mean: 0.0591595 s, 9 iterations, residual = 3.94587e-09).
+Timestep 99      Time=0.0121903   Next delT=0.00012867  Wall Time=15.6429   EMA=0.138958    Memory Used=246.16 MBs (avg) 253.19 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 99 at time=0.0121903
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113124        : 0    : 0.119061        : 0.00335352      : 0.124063        : 13   : 4.03155
+  TaskLocalComm     [seconds] : 0.0076699       : 0    : 0.0115563       : 0.00234839      : 0.0160835       : 21   : 28.148
+  TaskWaitCommTime  [seconds] : 0.00534345      : 11   : 0.01308         : 0.00476166      : 0.0208302       : 0    : 37.2067
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.40148e+08     : 25   : 2.4616e+08      : 3.8617e+06      : 2.53194e+08     : 21   : 2.7781
+  SCIMemoryMaxUsed  [MBytes ] : 2.40148e+08     : 25   : 2.4616e+08      : 3.8617e+06      : 2.53194e+08     : 21   : 2.7781
+  MemoryUsed        [MBytes ] : 8.31263e+08     : 2    : 8.68772e+08     : 1.84616e+07     : 8.98269e+08     : 21   : 3.28377
+  MemoryResident    [MBytes ] : 2.40148e+08     : 25   : 2.4616e+08      : 3.8617e+06      : 2.53194e+08     : 21   : 2.7781
+  Percentage of time spent in overhead : 0
+Solve of pressure on level 0 completed in 0.0612217 s (solve only: 0.0593696 s, mean: 0.0591977 s, 9 iterations, residual = 3.93328e-09).
+Timestep 100     Time=0.012319    Next delT=0.000128436 Wall Time=15.7818   EMA=0.138932    Memory Used=246.06 MBs (avg) 253.19 MBs (max on rank: 21    )
+Runtime Summary  summary stats for time step 100 at time=0.012319
+  Description       Units       Minimum           Rank   Average (32)      Std. Dev.         Maximum           Rank   100*(1-ave/max) '% load imbalance'
+  TaskExec          [seconds] : 0.113055        : 6    : 0.119244        : 0.00337899      : 0.124266        : 13   : 4.04179
+  TaskLocalComm     [seconds] : 0.00748744      : 0    : 0.0115778       : 0.00240015      : 0.0157773       : 11   : 26.617
+  TaskWaitCommTime  [seconds] : 0.004932        : 19   : 0.0124674       : 0.00476752      : 0.0205396       : 6    : 39.3008
+  NumberOfTasks     [tasks  ] : 41              : 0    : 41              : 0               : 41              : 0    : 0
+  NumberOfPatches   [patches] : 1               : 0    : 1               : 0               : 1               : 0    : 0
+  NumberOfCells     [cells  ] : 33792           : 10   : 34856.2         : 770.552         : 35937           : 0    : 3.00735
+  SCIMemoryUsed     [MBytes ] : 2.39079e+08     : 25   : 2.46058e+08     : 3.74442e+06     : 2.53194e+08     : 21   : 2.81849
+  SCIMemoryMaxUsed  [MBytes ] : 2.39079e+08     : 25   : 2.46058e+08     : 3.74442e+06     : 2.53194e+08     : 21   : 2.81849
+  MemoryUsed        [MBytes ] : 8.32836e+08     : 2    : 8.68696e+08     : 1.83168e+07     : 8.98269e+08     : 21   : 3.29223
+  MemoryResident    [MBytes ] : 2.39079e+08     : 25   : 2.46058e+08     : 3.74442e+06     : 2.53194e+08     : 21   : 2.81849
+  Percentage of time spent in overhead : 0
+Sus: going down successfully
