@@ -1,0 +1,8 @@
+#file           MPIprocs  threadsPerMPI  totalThreads  TG_comp   TG_recomp
+RK311.16.out    16        0              0             0.201273
+RK311.32.out    32        0              0             0.213708
+RK311.64.out    64        0              0             0.106411
+RK311.128.out   128       0              0             0.194156
+RK311.256.out   256       0              0             0.215078
+RK311.512.out   512       0              0             0.173422
+RK311.1024.out  1024      0              0             0.195948
