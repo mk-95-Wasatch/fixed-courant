@@ -5,7 +5,7 @@ cases="$(find ${here} -name "outputs")"
 
 solverDataPaths="solverData"
 scalingDataPaths="scalingData"
-# taskGraphDataPaths="taskGraphData"
+scalingMPIStatsPaths="mpiTimes"
 aveComponentTimesPaths="aveComponentTimes"
 
 for case in $cases;
@@ -15,17 +15,18 @@ do
     # run the extraction scripts
     ./extractSolverScalingData *.out
     ./extractScalingData *.out
+    ./extractMPIStats *.out
 
     solverDataPaths+=("${case}/solverScalingData")
     scalingDataPaths+=("${case}/scalingData")
-    # taskGraphDataPaths+=("${case}/TaskGraphData")
+    scalingMPIStatsPaths+=("${case}/mpiTimes")
     aveComponentTimesPaths+=("${case}/aveComponentTimes")
 done
 cd $here
 
 echo "${solverDataPaths[*]}" > $here/dataPaths 
 echo "${scalingDataPaths[*]}">> $here/dataPaths 
-# echo "${taskGraphDataPaths[*]}">> $here/dataPaths
+echo "${scalingMPIStatsPaths[*]}">> $here/dataPaths
 echo "${aveComponentTimesPaths[*]}">> $here/dataPaths
 
 python $here/dataFrameGen.py
