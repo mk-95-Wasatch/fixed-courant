@@ -1,3 +1,4 @@
 solverData /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK311/outputs/solverScalingData /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK300/outputs/solverScalingData
 scalingData /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK311/outputs/scalingData /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK300/outputs/scalingData
+mpiTimes /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK311/outputs/mpiTimes /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK300/outputs/mpiTimes
 aveComponentTimes /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK311/outputs/aveComponentTimes /Users/mkaram/Documents/research/Wasatch/fixed-courant/courant-0.2/RK300/outputs/aveComponentTimes
