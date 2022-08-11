@@ -15,7 +15,7 @@
 
 #SBATCH --mail-user=karammokbel@gmail.com
 
-export SCI_DEBUG='ComponentTimings:+'
+export SCI_DEBUG='ComponentTimings:+,MPIStats:+'
 
 cd $INPUT_DIR
 
