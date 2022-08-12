@@ -63,7 +63,14 @@ foreach X ( $out[*] )
     awk 'NR==1 {sum=$9}  ; NR > 1 {sum = sum + $9 };  END {print sum}'  $here/out.clean >$here/totalSolveTime
     awk 'NR==1 {sum=$13} ; NR > 1 {sum = sum + $13 }; END {print sum}'  $here/out.clean >$here/solveTime
 
-    paste -d " " $here/file $here/nMPI $here/threadsPerMPI $here/nThreads $here/startTime $here/endTime $here/totalSolveTime $here/solveTime >> $here/data
+    sed -n /"Timestep $startTimestep "/,/"Timestep $endTimestep "/p $X | grep iterations > $here/solverOut.clean
+    cut -d "," -f 3 .tmpFiles/solverOut.clean| awk 'BEGIN {sum=$1; count=0}  ; {sum = sum + $1; count = count + 1; };  END { printf sum/count;}' >$here/aveIterationsPerSolve
+
+    @ nsteps = $endTimestep - $startTimestep
+    echo $nsteps > $here/nSteps
+    cut -d "," -f 3 .tmpFiles/solverOut.clean| awk -vnsteps=$nsteps 'BEGIN {sum=$1;}  ; {sum = sum + $1;};  END { printf sum/nsteps;}' >$here/aveSolveIterationsPerTimestep
+
+    paste -d " " $here/file $here/nMPI $here/threadsPerMPI $here/nThreads $here/startTime $here/endTime $here/totalSolveTime $here/solveTime $here/nSteps $here/aveIterationsPerSolve $here/aveSolveIterationsPerTimestep>> $here/data
 
     echo "working on $X"
   else
@@ -77,7 +84,7 @@ end
 @ n = $endTimestep - $startTimestep
 
 echo " computing average mean time per timestep for $n timesteps"
-echo "#file MPIprocs threadsPerMPI totalThreads startWallTime endWallTime totalSolve+SetupTime totalSolveTime AveTimePerTimeStep aveTotalSolve+setup aveSolveTime"> $here/data2
+echo "#file MPIprocs threadsPerMPI totalThreads startWallTime endWallTime totalSolve+SetupTime totalSolveTime nSteps aveIterationsPerSolve aveSolveIterationsPerTimestep AveTimePerTimeStep aveTotalSolve+setup aveSolveTime"> $here/data2
 
 awk -vnSteps=$n '{print ($6-$5)/nSteps}' $here/data >> $here/aveMeanTime
 awk -vnSteps=$n '{print ($7)/nSteps}'    $here/data >> $here/aveTotalSolveTime
