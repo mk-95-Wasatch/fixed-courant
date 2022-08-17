@@ -35,12 +35,12 @@ CORES="16 32 64 128 256 512 1024"
 
 # MEMORY=":mem=110GB"      # use 128GB nodes
 
-JOB="small"
+JOB="Cr-0.2"
 THREADS="1"
 
 #__________________________________
 # common to all input files
-max_time="0.1" # 10 seconds
+max_time="10" # 10 seconds
 fixed_courant="0.2"
 output_time="0.005" # results 20 frame per second
 timesteps="100"
