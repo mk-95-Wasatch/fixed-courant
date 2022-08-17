@@ -93,7 +93,7 @@
 
 
   <Time>
-    <maxTime>0.1</maxTime>
+    <maxTime>10</maxTime>
     <initTime>0.0</initTime>
     <delt_init>1e-4</delt_init>
     <delt_min>1e-15</delt_min>
