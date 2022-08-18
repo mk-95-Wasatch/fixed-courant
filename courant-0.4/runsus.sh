@@ -12,7 +12,7 @@
 #SBATCH --account=saad
 #SBATCH --partition=notchpeak
 ## SBATCH --partition=notchpeak-freecycle
-
+#SBATCH-C "c64"
 #SBATCH --mail-user=karammokbel@gmail.com
 
 export SCI_DEBUG='ComponentTimings:+,MPIStats:+'
