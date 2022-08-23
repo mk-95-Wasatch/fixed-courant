@@ -77,7 +77,7 @@
         <NameTag name="viscosity"/>
       </Viscosity>
       <!-- <UsingPressureGuess stage-1="true" stage-2="true" outer-rule-multiplier="0.4"/> -->
-      <UsingPressureGuess stage-1="<<stage_1>>" stage-2="<<stage_2>>"/>
+      <!-- <UsingPressureGuess stage-1="<<stage_1>>" stage-2="<<stage_2>>"/> -->
       <Pressure>
       	<Use3DLaplacian>true</Use3DLaplacian>
         <Parameters>
