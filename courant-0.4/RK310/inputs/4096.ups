@@ -147,7 +147,7 @@
       <Box label="1">
         <lower>[0,-0.25,-0.25]</lower>
         <upper>[2,0.25,0.25]</upper>
-        <resolution>[256,256,256]</resolution>
+        <resolution>[1024,1024,1024]</resolution>
         <patches>[16,16,16]</patches>
       </Box>
       <periodic>[0,0,0]</periodic>
