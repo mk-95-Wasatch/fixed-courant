@@ -53,7 +53,7 @@ stage_2="true" # equivalent to !d2
 # 16 cores
 ups="16.ups"
 patches="[4,2,2]"
-resolution="[128,64,64]"
+resolution="[64,32,32]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -61,7 +61,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 32 cores
 ups="32.ups"
 patches="[4,4,2]"
-resolution="[128,128,64]"
+resolution="[64,64,32]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -69,7 +69,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 64 cores
 ups="64.ups"
 patches="[4,4,4]"
-resolution="[128,128,128]"
+resolution="[64,64,64]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -77,7 +77,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 128 cores
 ups="128.ups"
 patches="[8,4,4]"
-resolution="[256,128,128]"
+resolution="[128,64,64]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -86,7 +86,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 256 cores
 ups="256.ups"
 patches="[8,8,4]"
-resolution="[256,256,128]"
+resolution="[128,128,64]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -94,7 +94,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 512 cores
 ups="512.ups"
 patches="[8,8,8]"
-resolution="[256,256,256]"
+resolution="[128,128,128]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -102,7 +102,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 1024 cores
 ups="1024.ups"
 patches="[16,8,8]"
-resolution="[512,256,256]"
+resolution="[256,128,128]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -110,7 +110,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 2048 cores
 ups="2048.ups"
 patches="[16,16,8]"
-resolution="[512,512,256]"
+resolution="[256,256,128]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
@@ -118,7 +118,7 @@ modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolut
 # 4096 cores
 ups="4096.ups"
 patches="[16,16,16]"
-resolution="[512,512,512]"
+resolution="[256,256,256]"
 cp ../3D-jet.ups $INPUT_DIR/$ups
 modify_ups $ups $stage_1 $stage_2 $fixed_courant $output_time $max_time $resolution $patches $timesteps
 
